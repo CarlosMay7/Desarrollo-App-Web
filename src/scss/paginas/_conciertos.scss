@@ -1,0 +1,127 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.agenda {
+    padding: 1rem 0;
+    @include m.contenedor;
+}
+
+.conciertos {
+    $modificador: &;
+
+    &__heading {
+        color: v.$azul;
+        margin: 5rem 0;
+        text-align: left;
+        font-size: clamp(4rem, -0.8rem + 8vw, 6rem);
+    }
+
+    &__fecha {
+        font-size:4rem;
+        color: v.$gris;
+        margin: 3rem 0 1rem 0;
+    }
+
+    &--workshops {
+        #{$modificador}__heading {
+            color: v.$secundario;
+        }
+
+        .concierto__informacion {
+            background-color: v.$secundario;
+            &:hover {
+                background-color: darken(v.$secundario, 10);
+            }
+        }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: rgba(v.$blanco, 0.5);
+    }
+}
+
+.concierto {
+    &__card {
+        display: flex;
+        flex-direction: column;
+        background-color: v.$negro;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    &__fecha {
+        font-weight: v.$bold;
+    }
+
+    &__informacion {
+        padding: 2rem;
+        background-color: v.$azul;
+        color: v.$blanco;
+        z-index: 1;
+        transition: 500ms background-color ease;
+    }
+
+    &__nombre {
+        font-size: 2.4rem;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: v.$blanco;
+    }
+
+    &__introduccion {
+        font-size: 1.6rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: v.$blanco;
+
+        @include m.tablet{
+            -webkit-line-clamp: 2;
+        }
+    }
+
+    &__ciudad {
+        color: v.$blanco;
+        font-weight: bold;
+    }
+
+    &__imagen-artista {
+        width: 100%;
+        height: 18rem;
+        object-fit: cover;
+        opacity: .5;
+        transition: 500ms transform ease;
+    }
+
+    &__artista-nombre {
+        color: v.$blanco;
+        text-align: end;
+        font-weight: v.$bold;
+    }
+
+    &__agregar {
+        @include m.boton(v.$blanco, v.$negro);
+        margin-top: 1rem;
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+}
+.concierto__card:hover {
+    .concierto {
+        &__informacion {
+            background-color: darken(v.$azul, 10);
+        }
+
+        &__imagen-artista {
+            transform: scale(1.15);
+        }
+    }
+}
