@@ -1,6 +1,10 @@
 <main class="auth">
     <h2 class="auth__heading"><?php echo $titulo; ?></h2>
     <p class="auth__texto">Establece tu Nueva Contraseña</p>
+
+    <?php
+        require_once __DIR__ . "/..//templates/alertas.php";
+    ?>
         <form class="formulario" method="POST">
             <div class="formulario__campo">
                 <label class="formulario__label" for="password">Tu Nueva Contraseña</label>

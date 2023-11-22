@@ -7,9 +7,10 @@
         </a>
 
         <nav class="dashboard__nav">
-            <form method="POST" action="/logout" class="dashboard__form">
+            <a class="dashboard__submit--logout" href="/logout">Cerrar Sesión</a>
+            <!-- <form method="POST" action="/logout" class="dashboard__form">
                 <input type="submit" value="Cerrar Sesión" class="dashboard__submit--logout">
-            </form>
+            </form> -->
         </nav>
     </div>
 </header>

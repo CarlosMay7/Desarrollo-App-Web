@@ -1,5 +1,5 @@
 <header class="header">
-    <div class="header__contenedor">
+    <div class="header__contenedor">P
         <nav class="header__navegacion">
             <a href="/">
                 <h1 class="header__logo">
@@ -7,8 +7,17 @@
                 </h1>
             </a>
             <div class="header__contenedor--enlace">
+            <?php if(!isAuth()){ ?>
                 <a href="/registro" class="header__enlace">Registro</a>
                 <a href="/login" class="header__enlace">Iniciar Sesión</a>
+                <?php } else { ?>
+                <a href="/logout" class="header__enlace">Cerrar Sesión</a>
+                <?php if(isAdmin()){ ?>
+                        <a href="/admin/dashboard" class="header__enlace">Administrar</a> 
+                <?php } ?>
+            <?php } ?>
+
+
             </div>
 
         </nav>
