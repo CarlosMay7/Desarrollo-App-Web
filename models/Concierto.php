@@ -10,7 +10,6 @@ class Concierto extends ActiveRecord {
     public $ciudad;
     public $recinto;
     public $fecha_id;
-    public $hora;
     public $artista_id;
     public $artista;
     public $url_compra;

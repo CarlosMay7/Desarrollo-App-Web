@@ -28,7 +28,7 @@
 
 <section class = "imagegallery">
     <a href="https://www.eticket.mx/masinformacion.aspx?idevento=30939" target="_blank" class="imagegallery__enlace"><img class = "imagegallery__img"src="https://th.bing.com/th/id/OIP.9CgycRWBKUSZsgzIRd3hgQHaKl?pid=ImgDet&rs=1" alt=""></a>
-    <a href="https://www.ticketmaster.com.mx/tecate-pal-norte-boletos/artist/2000582" target="_blank" class="imagegallery__enlace"><img class = "imagegallery__img"src="https://th.bing.com/th?id=OIF.LiR3XbUVQu%2fMNRo1MOZlMQ&pid=ImgDet&rs=1" alt=""></a>
+    <a href="https://www.ticketmaster.com.mx/tecate-pal-norte-boletos/artist/2000582" target="_blank" class="imagegallery__enlace"><img class = "imagegallery__img"src="https://prismic-images.tmol.io/ticketmaster-tm-mx/e12248cf-2830-4383-8d09-76715cd3bb1c_TPN24+Poster+Por+Di%CC%81a_POST.png?auto=compress,format" alt=""></a>
     <a href="https://luismigueloficial.com/tour" target="_blank"class="imagegallery__enlace"><img class = "imagegallery__img"src="https://arturortiz.com.mx/wp-content/uploads/2023/04/Luis-Miguel-fechas-tour-2023.jpg" alt=""></a>
     <a href="https://www.oliviarodrigo.com/tour/" target="_blank" class="imagegallery__enlace"><img class = "imagegallery__img"src="https://th.bing.com/th/id/OIP.xqc2GHjPBie9KlmNDxTc0QHaHa?pid=ImgDet&rs=1" alt=""></a>
     <a href="https://www.ticketmaster.com.mx/search?q=taylor%20swift" target="_blank" class="imagegallery__enlace"><img class = "imagegallery__img" src="https://assets.intoleranciadiario.com/media/images/imagen-2023-06-03-102154598-1685809334837.png" alt=""></a>

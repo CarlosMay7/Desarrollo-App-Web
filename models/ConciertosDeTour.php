@@ -6,7 +6,9 @@ class Concierto extends ActiveRecord {
     protected static $columnasDB = ['id_tour', 'id_concierto'];
 
     public $id_tour;
+    public $tour;
     public $id_concierto;
+    public $concierto;
 
 
 

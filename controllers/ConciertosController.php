@@ -3,11 +3,25 @@
 namespace Controllers;
 
 use MVC\Router;
-
+use Model\Concierto;
+use Model\Fecha;
+use Model\Artista;
 class ConciertosController {
     public static function index(Router $router){
+
+        $conciertos;
+
+        foreach($conciertos as $concierto){
+            $concierto->artista = Artista::find($concierto->artista_id);
+            $concierto->dia = Fecha::find($concierto->fecha_id);
+            $concierto->mes = Fecha::find($concierto->fecha_id);
+            $concierto->año = Fecha::find($concierto->fecha_id);
+
+        }
         $router->render("admin/conciertos/index", [ 
-            "titulo" => "Conciertos"
+            "titulo" => "Conciertos",
+            "conciertos" => $conciertos,
+            "paginacion" => $paginacion->paginacion()
         ]);
     }
 
