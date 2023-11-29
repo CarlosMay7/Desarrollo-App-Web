@@ -1,5 +1,6 @@
+
 <?php
-$db = mysqli_connect( "localhost", "root", "", "devwebcamp"
+$db = mysqli_connect( "localhost", "concentus", "WEpt2I/iSav.7BU7", "Concentus"
     // $_ENV['DB_HOST'],
     // $_ENV['DB_USER'], 
     // $_ENV['DB_PASS'], 
@@ -14,3 +15,5 @@ if (!$db) {
     echo "error de depuración: " . mysqli_connect_error();
     exit;
 }
+
+?>

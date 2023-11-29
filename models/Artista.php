@@ -1,29 +1,24 @@
 <?php
 namespace Model;
 
-class Ponente extends ActiveRecord {
-    protected static $tabla = 'ponentes';
-    protected static $columnasDB = ['id', 'nombre', 'apellido', 'ciudad', 'pais', 'imagen', 'tags', 'redes'];
+class Artista extends ActiveRecord {
+    protected static $tabla = 'artistas';
+    protected static $columnasDB = ['id', 'nombre', 'imagen', 'etiquetas', 'redes'];
 
     public $id;
     public $nombre;
-    public $apellido;
-    public $ciudad;
-    public $pais;
     public $imagen;
     public $imagenActual;
-    public $tags;
+    public $etiquetas;
     public $redes;
 
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
         $this->nombre = $args['nombre'] ?? '';
-        $this->apellido = $args['apellido'] ?? '';
-        $this->ciudad = $args['ciudad'] ?? '';
-        $this->pais = $args['pais'] ?? '';
         $this->imagen = $args['imagen'] ?? '';
         $this->imagenActual = $args['imagenActual'] ?? '';
+        $this->etiquetas = $args['etiquetas'] ?? '';
         $this->redes = $args ["redes"] ?? "";
     }
 
@@ -31,18 +26,10 @@ class Ponente extends ActiveRecord {
         if(!$this->nombre) {
             self::$alertas['error'][] = 'El Nombre es Obligatorio';
         }
-        if(!$this->apellido) {
-            self::$alertas['error'][] = 'El Apellido es Obligatorio';
-        }
-        if(!$this->ciudad) {
-            self::$alertas['error'][] = 'El Campo Ciudad es Obligatorio';
-        }
-        if(!$this->pais) {
-            self::$alertas['error'][] = 'El Campo País es Obligatorio';
-        }
         if(!$this->imagen) {
             self::$alertas['error'][] = 'La imagen es obligatoria';
         }
+        
         if(!$this->tags) {
             self::$alertas['error'][] = 'El Campo áreas es obligatorio';
         }
