@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2023 a las 05:33:56
+-- Tiempo de generación: 29-11-2023 a las 05:39:41
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -121,15 +121,15 @@ ALTER TABLE `artistas`
 --
 ALTER TABLE `conciertos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `artista_id` (`artista_id`),
-  ADD KEY `fecha_id` (`fecha_id`);
+  ADD KEY `conciertos_ibfk_1` (`artista_id`),
+  ADD KEY `conciertos_ibfk_2` (`fecha_id`);
 
 --
 -- Indices de la tabla `conciertosdetour`
 --
 ALTER TABLE `conciertosdetour`
   ADD PRIMARY KEY (`tour_id`,`concierto_id`),
-  ADD KEY `concierto_id` (`concierto_id`);
+  ADD KEY `conciertosdetour_ibfk_1` (`concierto_id`);
 
 --
 -- Indices de la tabla `fecha`
@@ -142,7 +142,7 @@ ALTER TABLE `fecha`
 --
 ALTER TABLE `tours`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `artista_id` (`artista_id`);
+  ADD KEY `tours_ibfk_1` (`artista_id`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -192,21 +192,21 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `conciertos`
 --
 ALTER TABLE `conciertos`
-  ADD CONSTRAINT `conciertos_ibfk_1` FOREIGN KEY (`artista_id`) REFERENCES `artistas` (`id`),
-  ADD CONSTRAINT `conciertos_ibfk_2` FOREIGN KEY (`fecha_id`) REFERENCES `fecha` (`id`);
+  ADD CONSTRAINT `conciertos_ibfk_1` FOREIGN KEY (`artista_id`) REFERENCES `artistas` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `conciertos_ibfk_2` FOREIGN KEY (`fecha_id`) REFERENCES `fecha` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `conciertosdetour`
 --
 ALTER TABLE `conciertosdetour`
-  ADD CONSTRAINT `conciertosdetour_ibfk_1` FOREIGN KEY (`concierto_id`) REFERENCES `conciertos` (`id`),
-  ADD CONSTRAINT `conciertosdetour_ibfk_2` FOREIGN KEY (`tour_id`) REFERENCES `tours` (`id`);
+  ADD CONSTRAINT `conciertosdetour_ibfk_1` FOREIGN KEY (`concierto_id`) REFERENCES `conciertos` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `conciertosdetour_ibfk_2` FOREIGN KEY (`tour_id`) REFERENCES `tours` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tours`
 --
 ALTER TABLE `tours`
-  ADD CONSTRAINT `tours_ibfk_1` FOREIGN KEY (`artista_id`) REFERENCES `artistas` (`id`);
+  ADD CONSTRAINT `tours_ibfk_1` FOREIGN KEY (`artista_id`) REFERENCES `artistas` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
