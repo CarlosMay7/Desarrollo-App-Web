@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2023 a las 20:05:29
+-- Tiempo de generación: 29-11-2023 a las 20:25:41
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -73,7 +73,13 @@ INSERT INTO `conciertos` (`id`, `ciudad`, `recinto`, `fecha_id`, `descripcion`, 
 (5, 'Aguascalientes', 'Estadio Victoria', 5, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
 (6, 'San Luis Potosi', 'Estadio Alfonso Lastras', 6, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
 (7, 'Leon', 'Estadio TV4 Domingo Santana', 7, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
-(8, 'Puebla', 'Estadio Cuahtemoc', 8, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1);
+(8, 'Puebla', 'Estadio Cuahtemoc', 8, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
+(9, 'Oaxaca', 'Estadio Tecnológico de Oaxaca', 9, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1),
+(10, 'Veracruz', 'Estadio Beto Ávila ', 10, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1),
+(11, 'Morelia', 'Estadio Morelos', 11, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1),
+(12, 'Guadalajara', 'Estadio Jalisco', 12, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1),
+(13, 'Guadalajara', 'Estadio Jalisco', 13, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1),
+(14, 'CDMX', 'Arena CDMX', 14, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -123,7 +129,13 @@ INSERT INTO `fecha` (`id`, `dia`, `mes`, `año`) VALUES
 (5, 2, 12, '2023'),
 (6, 4, 12, '2023'),
 (7, 5, 12, '2023'),
-(8, 8, 12, '2023');
+(8, 8, 12, '2023'),
+(9, 10, 12, '2023'),
+(10, 12, 12, '2023'),
+(11, 15, 12, '2023'),
+(12, 17, 12, '2023'),
+(13, 18, 12, '2023'),
+(14, 20, 12, '2023');
 
 -- --------------------------------------------------------
 
@@ -227,13 +239,13 @@ ALTER TABLE `artistas`
 -- AUTO_INCREMENT de la tabla `conciertos`
 --
 ALTER TABLE `conciertos`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `fecha`
 --
 ALTER TABLE `fecha`
-  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `tours`

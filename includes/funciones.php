@@ -30,7 +30,8 @@ function isAdmin() : bool {
 }
 
 function transformMonths($conciertos){
-    $conciertosPorFecha= [];  
+    $conciertosPorFecha= [];
+    $conciertosPorFecha = array_fill(1, 12, []);  
     foreach($conciertos as $concierto){
 
     if ($concierto->mes == 1){

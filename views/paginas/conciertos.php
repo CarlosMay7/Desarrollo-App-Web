@@ -48,7 +48,6 @@
         <div class="conciertos__listado slider swiper">
             <div class="swiper-wrapper">
             <?php
-            
             foreach($conciertos[$i] as $concierto){
                 if($concierto->año == 2023) continue;
                 ?>
