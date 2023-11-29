@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2023 a las 05:39:41
+-- Tiempo de generación: 29-11-2023 a las 20:05:29
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -29,11 +29,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `artistas` (
   `id` int(4) UNSIGNED NOT NULL,
-  `nombre` varchar(128) DEFAULT NULL,
+  `nombre` varchar(128) NOT NULL,
   `imagen` text NOT NULL,
   `etiquetas` varchar(64) NOT NULL,
   `redes` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `artistas`
+--
+
+INSERT INTO `artistas` (`id`, `nombre`, `imagen`, `etiquetas`, `redes`) VALUES
+(1, 'Florencia Bertotti', 'https://www.sonica.mx/u/fotografias/m/2023/11/28/f685x385-50654_88347_5050.jpg', 'SONG-WRITER', '@flobertottiok'),
+(2, 'Iron Maiden', 'https://th.bing.com/th/id/OIF.xw7oWGBwSpxA25hkKfXvPQ?rs=1&pid=ImgDetMain', 'HEAVY-METAL', '@ironmaiden'),
+(4, 'Luis Miguel', 'https://tolucalabellacd.com/wp-content/uploads/2023/02/anuncian-tour-2023-de-luis-miguel-de-manera-oficial.jpg', 'ROMANCE', '@luismiguel');
 
 -- --------------------------------------------------------
 
@@ -52,6 +61,20 @@ CREATE TABLE `conciertos` (
   `sold_out` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `conciertos`
+--
+
+INSERT INTO `conciertos` (`id`, `ciudad`, `recinto`, `fecha_id`, `descripcion`, `url_compra`, `artista_id`, `sold_out`) VALUES
+(1, 'CDMX', 'Auditorio Nacional', 1, 'Venta general, 1 de Diciembre, 10:00 am', 'https://www.ticketmaster.com.mx/search?q=flor%20bertotti', 1, 0),
+(2, 'CDMX', 'Foro-Sol', 2, 'PREVENTA HSBC 30 DE NOVIEMBRE Y 1 DE DICIEMBRE 2:00 PM\r\n\r\nVENTA GENERAL 3 DE DICIEMBRE 2:00 PM', 'https://www.ticketmaster.com.mx/search?q=Iron%20maiden', 2, 0),
+(3, 'CDMX', 'Arena CDMX', 3, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1),
+(4, 'Queretaro', 'Estadio Corregidora', 4, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
+(5, 'Aguascalientes', 'Estadio Victoria', 5, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
+(6, 'San Luis Potosi', 'Estadio Alfonso Lastras', 6, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
+(7, 'Leon', 'Estadio TV4 Domingo Santana', 7, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
+(8, 'Puebla', 'Estadio Cuahtemoc', 8, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +85,18 @@ CREATE TABLE `conciertosdetour` (
   `tour_id` int(3) UNSIGNED NOT NULL,
   `concierto_id` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `conciertosdetour`
+--
+
+INSERT INTO `conciertosdetour` (`tour_id`, `concierto_id`) VALUES
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8);
 
 -- --------------------------------------------------------
 
@@ -76,6 +111,20 @@ CREATE TABLE `fecha` (
   `año` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `fecha`
+--
+
+INSERT INTO `fecha` (`id`, `dia`, `mes`, `año`) VALUES
+(1, 24, 3, '2024'),
+(2, 20, 11, '2024'),
+(3, 28, 11, '2023'),
+(4, 30, 11, '2023'),
+(5, 2, 12, '2023'),
+(6, 4, 12, '2023'),
+(7, 5, 12, '2023'),
+(8, 8, 12, '2023');
+
 -- --------------------------------------------------------
 
 --
@@ -88,6 +137,13 @@ CREATE TABLE `tours` (
   `descripcion` text NOT NULL,
   `artista_id` int(4) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tours`
+--
+
+INSERT INTO `tours` (`id`, `nombre`, `descripcion`, `artista_id`) VALUES
+(1, 'Luis Miguel Tour 2023', 'Tour de regreso Luis Miguel en México ', 4);
 
 -- --------------------------------------------------------
 
@@ -105,6 +161,13 @@ CREATE TABLE `usuarios` (
   `token` varchar(128) NOT NULL,
   `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `password`, `confirmado`, `token`, `admin`) VALUES
+(1, ' Diego', 'Alamilla', 'diego-alamilla@hotmail.com', '$2y$10$Bcfk1AxhFstxy/XvJrTRYu.7Tf5X8SP7H4uFpLT8IHvLZZ8/CNR3O', 0, '6566c58a866a4', 0);
 
 --
 -- Índices para tablas volcadas
@@ -158,31 +221,31 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `artistas`
 --
 ALTER TABLE `artistas`
-  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `conciertos`
 --
 ALTER TABLE `conciertos`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `fecha`
 --
 ALTER TABLE `fecha`
-  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tours`
 --
 ALTER TABLE `tours`
-  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
