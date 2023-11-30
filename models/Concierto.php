@@ -12,6 +12,7 @@ class Concierto extends ActiveRecord {
     public $fecha_id;
     public $artista_id;
     public $artista;
+    public $descripcion;
     public $url_compra;
     public $sold_out;
 
@@ -21,7 +22,7 @@ class Concierto extends ActiveRecord {
         $this->ciudad = $args['ciudad'] ?? '';
         $this->recinto = $args['recinto'] ?? '';
         $this->fecha_id = $args['fecha_id'] ?? '';
-        $this->hora = $args['hora'] ?? '';
+        $this->descripcion = $args['descripcion'] ?? '';
         $this->artista_id = $args['artista_id'] ?? '';
         $this->url_compra = $args['url_compra'] ?? '';
         $this->sold_out = $args['sold_out'] ?? '';
@@ -38,8 +39,8 @@ class Concierto extends ActiveRecord {
         if(!$this->fecha_id  || !filter_var($this->fecha_id, FILTER_VALIDATE_INT)) {
             self::$alertas['error'][] = 'Elige el Día del evento';
         }
-        if(!$this->hora){
-            self::$alertas['error'][] = 'Elige la hora del evento';
+        if(!$this->descripcion) {
+            self::$alertas['error'][] = 'Escribe la descripción evento';
         }
         if(!$this->url_compra) {
             self::$alertas['error'][] = 'El Campo URL de compra es Obligatorio';

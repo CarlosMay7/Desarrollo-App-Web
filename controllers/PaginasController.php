@@ -5,7 +5,7 @@ use Model\Concierto;
 use Model\Artista;
 use Model\Fecha;
 use Model\Tour;
-
+use Model\ConciertosDeTour;
 use MVC\Router;
 use includes\funciones;
 class PaginasController {
@@ -84,9 +84,28 @@ class PaginasController {
     }
 
     public static function listaConciertos(Router $router) {
-
+        $id = $_GET["concierto"];
+        $concierto = Concierto::find($id);
+        $artista  = Artista::find($concierto->artista_id);
+        $concierto->imagen = $artista->imagen;
+            $concierto->nombre = $artista->nombre;
+            $fecha = Fecha::find($concierto->fecha_id);
+            $concierto->dia = $fecha->dia;
+            $concierto->mes = $fecha->mes;
+            $concierto->año = $fecha->año;
+        $tour = ConciertosDeTour::where("concierto_id", $concierto->id);
+        
+        if($tour != NULL){
+            $tour = Tour::find($tour->tour_id);
+            $concierto->tour = $tour->nombre;
+        }else {
+            $concierto->tour = NULL;
+        }
+        
+        $concierto = transformMonthsforOne($concierto);
         $router->render("/paginas/lista-conciertos", [
-            "titulo" => "Bad Bunny"
+            "titulo" => "Información completa del Concierto",
+            "concierto" => $concierto
         ]);
     }
 

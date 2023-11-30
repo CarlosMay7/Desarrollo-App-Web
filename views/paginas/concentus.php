@@ -1,6 +1,6 @@
 <main class="concentus">
     <h2 class="concentus__heading"><?php echo $titulo; ?></h2>
-    <p class="concentus__descripcion">Conocenos a nosostros y nuestra misión</p>
+    <p class="concentus__descripcion">Conocenos a nosotros y nuestra misión</p>
 
     <div class="concentus__grid">
         <div class="concentus__imagen">

@@ -1,29 +1,29 @@
 <?php
 namespace Model;
 
-class Concierto extends ActiveRecord {
-    protected static $tabla = 'conciertosDeTour';
-    protected static $columnasDB = ['id_tour', 'id_concierto'];
+class ConciertosDeTour extends ActiveRecord {
+    protected static $tabla = 'conciertosdetour';
+    protected static $columnasDB = ['tour_id', 'concierto_id'];
 
-    public $id_tour;
+    public $tour_id;
     public $tour;
-    public $id_concierto;
+    public $concierto_id;
     public $concierto;
 
 
 
     public function __construct($args = [])
     {
-        $this->id_tour = $args['id_tour'] ?? null;
-        $this->id_concierto = $args['id_concierto'] ?? null;
+        $this->tour_id = $args['tour_id'] ?? null;
+        $this->concierto_id = $args['concierto_id'] ?? null;
     }
 
 
     public function validar() {
-        if(!$this->id_tour) {
+        if(!$this->tour_id) {
             self::$alertas['error'][] = 'El Campo Tour es Obligatorio';
         }
-        if(!$this->id_concierto) {
+        if(!$this->concierto_id) {
             self::$alertas['error'][] = 'El Campo Concierto es Obligatorio';
         }
         

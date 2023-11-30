@@ -85,3 +85,43 @@ function transformMonths($conciertos){
 }
     return $conciertosPorFecha;
 }
+
+function transformMonthsforOne($concierto){
+    if ($concierto->mes == 1){
+        $concierto->mes = "Enero";
+    }
+    if ($concierto->mes == 2){
+        $concierto->mes = "Febrero";
+    }
+    if ($concierto->mes == 3){
+        $concierto->mes = "Marzo";
+    }
+    if ($concierto->mes == 4){
+        $concierto->mes = "Abril";
+    }
+    if ($concierto->mes == 5){
+        $concierto->mes = "Mayo";
+    }
+    if ($concierto->mes == 6){
+        $concierto->mes = "Junio";
+    }
+    if ($concierto->mes == 7){
+        $concierto->mes = "Julio";
+    }
+    if ($concierto->mes == 8){
+        $concierto->mes = "Agosto";
+    }
+    if ($concierto->mes == 9){
+        $concierto->mes = "Septiembre";
+    }
+    if ($concierto->mes == 10){
+        $concierto->mes = "Octubre";
+    }
+    if ($concierto->mes == 11){
+        $concierto->mes = "Noviembre";
+    }
+    if ($concierto->mes == 12){
+        $concierto->mes = "Diciembre";
+    }
+    return $concierto;
+}

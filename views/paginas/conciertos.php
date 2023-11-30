@@ -18,13 +18,12 @@
             
                 <div class="concierto swiper-slide">
                     <p class="concierto__fecha"><?php echo $concierto->dia . " " . $concierto->mes?> </p>
-                    <a href="/lista-conciertos">
+                    <a href="/lista-conciertos?concierto=<?php echo $concierto->id?>">
                         <div class="concierto__card">
                             <img class="concierto__imagen-artista" loading="lazy" width="200" height="300" src= "<?php echo $concierto->imagen?>" alt="Artista">
 
                             <div class="concierto__informacion">
                                 <h4 class="concierto__nombre"><?php echo $concierto->recinto ?></h4>
-
                                 <p class="concierto__ciudad"><?php echo $concierto->ciudad?></p>
                                 <p class="concierto__introduccion"></p>
                                 <p class="concierto__artista-nombre"><?php echo $concierto->nombre ?></p>
@@ -54,7 +53,7 @@
             
                 <div class="concierto swiper-slide">
                     <p class="concierto__fecha"><?php echo $concierto->dia . " " . $concierto->mes?> </p>
-                    <a href="/lista-conciertos">
+                    <a href="/lista-conciertos?concierto=<?php echo $concierto->id?>">
                         <div class="concierto__card">
                             <img class="concierto__imagen-artista" loading="lazy" width="200" height="300" src= "<?php echo $concierto->imagen?>" alt="Artista">
 
