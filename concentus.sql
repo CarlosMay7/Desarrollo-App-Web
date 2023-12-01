@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2023 a las 20:25:41
+-- Tiempo de generación: 01-12-2023 a las 07:14:44
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -42,7 +42,9 @@ CREATE TABLE `artistas` (
 INSERT INTO `artistas` (`id`, `nombre`, `imagen`, `etiquetas`, `redes`) VALUES
 (1, 'Florencia Bertotti', 'https://www.sonica.mx/u/fotografias/m/2023/11/28/f685x385-50654_88347_5050.jpg', 'SONG-WRITER', '@flobertottiok'),
 (2, 'Iron Maiden', 'https://th.bing.com/th/id/OIF.xw7oWGBwSpxA25hkKfXvPQ?rs=1&pid=ImgDetMain', 'HEAVY-METAL', '@ironmaiden'),
-(4, 'Luis Miguel', 'https://tolucalabellacd.com/wp-content/uploads/2023/02/anuncian-tour-2023-de-luis-miguel-de-manera-oficial.jpg', 'ROMANCE', '@luismiguel');
+(4, 'Luis Miguel', 'https://tolucalabellacd.com/wp-content/uploads/2023/02/anuncian-tour-2023-de-luis-miguel-de-manera-oficial.jpg', 'ROMANCE', '@luismiguel'),
+(5, 'Alejandro Fernandez', 'https://th.bing.com/th/id/OIP.9qoNVNJ4nPyeoCIQiDauqwHaE5?w=264&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7', 'RANCHERA', '@alexoficial'),
+(6, 'MEGADETH', 'https://th.bing.com/th/id/OIP.BONzQ8YSXyrYCb8W8fzQjgHaEK?w=329&h=185&c=7&r=0&o=5&dpr=1.3&pid=1.7', 'TRASH-METAL', '@megadeth');
 
 -- --------------------------------------------------------
 
@@ -79,7 +81,20 @@ INSERT INTO `conciertos` (`id`, `ciudad`, `recinto`, `fecha_id`, `descripcion`, 
 (11, 'Morelia', 'Estadio Morelos', 11, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1),
 (12, 'Guadalajara', 'Estadio Jalisco', 12, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1),
 (13, 'Guadalajara', 'Estadio Jalisco', 13, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1),
-(14, 'CDMX', 'Arena CDMX', 14, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1);
+(14, 'CDMX', 'Arena CDMX', 14, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1),
+(15, 'Guadalajara', 'Plaza de Toros Nuevo Progreso', 15, '6 de diciembre Preventa Citibanamex 11:00 AM\r\n7 de diciembre Venta General 11:00 AM\r\n', 'https://www.eticket.mx/busqueda.aspx?buscar=alejandro%20fernandez', 5, 0),
+(16, 'CDMX', 'Plaza de Toros La México', 16, '6 de diciembre Preventa Citibanamex 11:00 AM\r\n7 de diciembre Venta General 11:00 AM\r\n', 'https://www.eticket.mx/busqueda.aspx?buscar=alejandro%20fernandez', 5, 0),
+(17, 'Villahermosa', 'Estadio de Béisbol Centenario 27 de febrero', 17, '6 de diciembre Preventa Citibanamex 11:00 AM\r\n7 de diciembre Venta General 11:00 AM\r\n', 'https://www.eticket.mx/busqueda.aspx?buscar=alejandro%20fernandez', 5, 0),
+(18, 'Tuxtla', 'Estadio de Futbol Victor Manuel Reyna', 18, '6 de diciembre Preventa Citibanamex 11:00 AM\r\n7 de diciembre Venta General 11:00 AM\r\n', 'https://www.eticket.mx/busqueda.aspx?buscar=alejandro%20fernandez', 5, 0),
+(19, 'Mexicali', 'Plaza de Toros Calafia', 19, '6 de diciembre Preventa Citibanamex 11:00 AM\r\n7 de diciembre Venta General 11:00 AM\r\n', 'https://www.eticket.mx/busqueda.aspx?buscar=alejandro%20fernandez', 5, 0),
+(20, 'Tijuana', 'Plaza de Toros Monumental las Playas', 20, '6 de diciembre Preventa Citibanamex 11:00 AM\r\n7 de diciembre Venta General 11:00 AM\r\n', 'https://www.eticket.mx/busqueda.aspx?buscar=alejandro%20fernandez', 5, 0),
+(21, 'Pachuca', 'Plaza de Toros Vicente Segura', 21, '6 de diciembre Preventa Citibanamex 11:00 AM\r\n7 de diciembre Venta General 11:00 AM\r\n', 'https://www.eticket.mx/busqueda.aspx?buscar=alejandro%20fernandez', 5, 0),
+(22, 'CDMX', 'Auditorio Nacional', 23, 'Venta General: 1 de Diciembre 10:00 am', 'https://www.ticketmaster.com.mx/search?q=flor%20bertotti', 1, 1),
+(23, 'Guadalajara', 'Auditorio Telmex', 22, 'Venta General: 1 de Diciembre 10:00 am', 'https://www.ticketmaster.com.mx/search?q=flor%20bertotti', 1, 0),
+(24, 'Monterrey', 'Arena Monterrey', 24, 'Venta General: 1 de Diciembre 10:00 am', 'https://www.ticketmaster.com.mx/search?q=flor%20bertotti', 1, 0),
+(25, 'Puebla', 'Auditorio Metropolitano', 25, 'Venta General: 1 de Diciembre 10:00 am', 'https://www.ticketmaster.com.mx/search?q=flor%20bertotti', 1, 0),
+(26, 'CDMX', 'Arena CDMX', 28, 'Preventa Army: 11 Noviembre 10:00 AM', 'https://web2.superboletos.com/SuperBoletos/landing-evento?event_id=562zCuaI85ahKp4L94MuZQ', 6, 0),
+(27, 'Monterrey', 'Arena Monterrey', 29, 'Preventa Army: 11 Noviembre 10:00 AM', 'https://web2.superboletos.com/SuperBoletos/landing-evento?event_id=562zCuaI85ahKp4L94MuZQ', 6, 0);
 
 -- --------------------------------------------------------
 
@@ -102,7 +117,20 @@ INSERT INTO `conciertosdetour` (`tour_id`, `concierto_id`) VALUES
 (1, 5),
 (1, 6),
 (1, 7),
-(1, 8);
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12),
+(1, 13),
+(1, 14),
+(2, 15),
+(2, 16),
+(2, 17),
+(2, 18),
+(2, 19),
+(2, 20),
+(2, 21);
 
 -- --------------------------------------------------------
 
@@ -135,7 +163,20 @@ INSERT INTO `fecha` (`id`, `dia`, `mes`, `año`) VALUES
 (11, 15, 12, '2023'),
 (12, 17, 12, '2023'),
 (13, 18, 12, '2023'),
-(14, 20, 12, '2023');
+(14, 20, 12, '2023'),
+(15, 23, 2, '2024'),
+(16, 2, 3, '2024'),
+(17, 7, 3, '2024'),
+(18, 9, 3, '2024'),
+(19, 14, 3, '2024'),
+(20, 16, 3, '2024'),
+(21, 20, 4, '2024'),
+(22, 8, 2, '2024'),
+(23, 4, 2, '2024'),
+(24, 11, 2, '2024'),
+(25, 14, 2, '2024'),
+(28, 25, 4, '2024'),
+(29, 27, 4, '2024');
 
 -- --------------------------------------------------------
 
@@ -155,7 +196,8 @@ CREATE TABLE `tours` (
 --
 
 INSERT INTO `tours` (`id`, `nombre`, `descripcion`, `artista_id`) VALUES
-(1, 'Luis Miguel Tour 2023', 'Tour de regreso Luis Miguel en México ', 4);
+(1, 'Luis Miguel Tour 2023', 'Tour de regreso Luis Miguel en México ', 4),
+(2, 'AMOR Y PATRIA', 'TOUR DE ALEJANDRO FERNANDEZ POR MÉXICO EN 2024', 5);
 
 -- --------------------------------------------------------
 
@@ -210,7 +252,7 @@ ALTER TABLE `conciertosdetour`
 -- Indices de la tabla `fecha`
 --
 ALTER TABLE `fecha`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`,`dia`,`mes`,`año`);
 
 --
 -- Indices de la tabla `tours`
@@ -233,25 +275,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `artistas`
 --
 ALTER TABLE `artistas`
-  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `conciertos`
 --
 ALTER TABLE `conciertos`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `fecha`
 --
 ALTER TABLE `fecha`
-  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `tours`
 --
 ALTER TABLE `tours`
-  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
