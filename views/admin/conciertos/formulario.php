@@ -2,13 +2,25 @@
     <legend class="formulario__legend">Información Concierto</legend>
 
     <div class="formulario__campo">
-        <label for="nombre" class="formulario__label">Nombre Concierto</label>
+        <label for="ciudad" class="formulario__label">Ciudad</label>
         <input 
             type="text" 
             class="formulario__input" 
-            id="nombre" 
-            name="nombre" 
-            placeholder="Nombre del Concierto" 
+            id="ciudad" 
+            name="ciudad" 
+            placeholder="Ciudad del Concierto" 
+            value="<?php echo $concierto->ciudad ?? "";?>" 
+        >
+    </div>
+    <div class="formulario__campo">
+        <label for="ciudad" class="formulario__label">Recinto</label>
+        <input 
+            type="text" 
+            class="formulario__input" 
+            id="recinto" 
+            name="recinto" 
+            placeholder="Recinto del Concierto" 
+            value="<?php echo $concierto->recinto ?? "";?>" 
         >
     </div>
 
@@ -19,11 +31,11 @@
             id="descripcion" 
             name="descripcion" 
             placeholder="Descripción del Concierto" 
-            rows = "8"
-        ></textarea>
+            rows = "8" 
+        ><?php echo $concierto->descripcion ?? "";?></textarea>
     </div>
 
-    <div class="formulario__campo">
+    <!-- <div class="formulario__campo">
         <label for="categoaria" class="formulario__label">Género del Concierto</label>
         <select class="formulario__select" id="categoria" name="categoria_id">
             <option value="">--Seleccionar--</option>
@@ -32,9 +44,9 @@
             <option value="1">Pop</option>
             <option value="1">Reguetón</option>
         </select>
-    </div>
+    </div> -->
 
-    <div class="formulario__campo">
+    <!-- <div class="formulario__campo">
         <label for="categoria" class="formulario__label">Seleccione el Día</label>
 
         <div class="formulario__radio">
@@ -61,11 +73,9 @@
             </div>
             <input type="hidden" name="dia_id" value="">
         </div>
+    </div> -->
 
-
-    </div>
-
-    <div class="formulario__campo" id="horas">
+    <!-- <div class="formulario__campo" id="horas">
         <label for="" clas="formulario__label">Seleccionar Hora</label>
 
         <ul id="horas" class="horas">
@@ -85,7 +95,7 @@
 
         <input type="hidden" name="hora_id" value="">
 
-    </div>
+    </div> -->
 </fieldset>
 
 <fieldset class="formulario__fieldset">
@@ -100,7 +110,7 @@
             placeholder="Buscar Artista / Banda" 
         >
         <ul id="listado-artistas" class="listado-artistas"></ul>
-        <input type="hidden" name="artista_id" value="1">
+        <input type="hidden" name="artista_id" value="<?php echo $concierto->artista_id; ?>">
 
     </div>
 
@@ -114,6 +124,18 @@
             name="disponibles" 
             placeholder="Ej: 20" 
             value= ""
+        >
+    </div>
+
+    <div class="formulario__campo">
+        <label for="url" class="formulario__label">URL de compra</label>
+        <input 
+            type="text" 
+            class="formulario__input" 
+            id="url" 
+            name="url_compra" 
+            placeholder="URL de compra" 
+            value="<?php echo $concierto->url_compra ?? "";?>" 
         >
     </div>
 </fieldset>

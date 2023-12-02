@@ -16,16 +16,18 @@ class Concierto extends ActiveRecord {
     public $url_compra;
     public $sold_out;
 
+    //Agregar géneros y disponibilidad
+
 
     public function __construct($args = []){
         $this->id = $args['id'] ?? null;
         $this->ciudad = $args['ciudad'] ?? '';
         $this->recinto = $args['recinto'] ?? '';
-        $this->fecha_id = $args['fecha_id'] ?? '';
+        $this->fecha_id = $args['fecha_id'] ?? '14';
         $this->descripcion = $args['descripcion'] ?? '';
         $this->artista_id = $args['artista_id'] ?? '';
         $this->url_compra = $args['url_compra'] ?? '';
-        $this->sold_out = $args['sold_out'] ?? '';
+        $this->sold_out = $args['sold_out'] ?? '1';
     }
 
     // Mensajes de validación para la creación de un evento

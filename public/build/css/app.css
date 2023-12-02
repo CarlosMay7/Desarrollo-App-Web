@@ -1363,7 +1363,7 @@ h3 {
   cursor: pointer;
 }
 
-.listado-ponentes {
+.listado-artistas {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1371,17 +1371,17 @@ h3 {
   gap: 1rem;
   grid-template-columns: repeat(1, 1fr);
 }
-.listado-ponentes__ponente, .listado-ponentes__ponente--seleccionado {
+.listado-artistas__artista, .listado-artistas__artista--seleccionado {
   color: #007df4;
   border: 1px solid #007df4;
   padding: 1rem;
   border-radius: 1rem;
   text-align: center;
 }
-.listado-ponentes__ponente:hover, .listado-ponentes__ponente--seleccionado:hover {
+.listado-artistas__artista:hover, .listado-artistas__artista--seleccionado:hover {
   cursor: pointer;
 }
-.listado-ponentes__ponente--seleccionado {
+.listado-artistas__artista--seleccionado {
   background-color: #007df4;
   color: #FFFFFF;
 }

@@ -7,13 +7,13 @@ use Model\Fecha;
 use Model\Tour;
 use Model\ConciertosDeTour;
 use MVC\Router;
-use includes\funciones;
+
 class PaginasController {
     public static function index(Router $router) {
+        
         $conciertos = Concierto::ordenar("fecha_id", "ASC");
          
         foreach($conciertos as $concierto){
-
             $concierto->artista = Artista::find($concierto->artista_id);
             $artista  = Artista::find($concierto->artista_id);
             $concierto->imagen = $artista->imagen;
@@ -21,10 +21,7 @@ class PaginasController {
             $fecha = Fecha::find($concierto->fecha_id);
             $concierto->dia = $fecha->dia;
             $concierto->mes = $fecha->mes;
-            $concierto->año = $fecha->año;
-            
-
-            
+            $concierto->año = $fecha->año;            
         }
         $conciertosPorFecha = transformMonths($conciertos);
 
@@ -44,6 +41,10 @@ class PaginasController {
         ]);
     }
     public static function misConciertos(Router $router) {
+
+        if(!isAuth()){
+            header("Location: /login");
+        }
 
 
         $router->render("/paginas/mis-conciertos", [

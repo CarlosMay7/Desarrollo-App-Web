@@ -54,7 +54,7 @@ $router->post('/admin/conciertos/eliminar', [ConciertosController::class, 'elimi
 //API 
 $router->get('/api/conciertos-horario', [Apiconciertos::class, 'index']);
 $router->get('/api/artistas', [ApiArtistas::class, 'index']);
-$router->get('/api/ponente', [ApiArtistas::class, 'ponente']);
+$router->get('/api/artista', [ApiArtistas::class, 'artista']);
 
 //Area Publica
 $router->get('/', [PaginasController::class, 'index']);

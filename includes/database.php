@@ -1,6 +1,6 @@
 
 <?php
-$db = mysqli_connect( "localhost", "concentus", "WEpt2I/iSav.7BU7", "Concentus"
+$db = mysqli_connect( "localhost", "root", "", "concentus"
     // $_ENV['DB_HOST'],
     // $_ENV['DB_USER'], 
     // $_ENV['DB_PASS'], 
