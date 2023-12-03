@@ -132,7 +132,7 @@ class ArtistasController {
             header("Location: /admin/artistas");
         }
 
-        $artista->imagenActual = $artista->imagen;
+        $artista->imagen = $artista->imagen;
         $redes = json_decode($artista->redes);
 
         if($_SERVER["REQUEST_METHOD"] === "POST"){
@@ -177,7 +177,7 @@ class ArtistasController {
             if(empty($alertas)){
                 // Intentar mover el archivo al directorio de destino
                 if (move_uploaded_file($_FILES["imagen"]["tmp_name"],$archivo)) {
-                    $imagenActual = $archivo;
+                    $imagen = $archivo;
                     echo "El archivo " . htmlspecialchars(basename($_FILES["imagen"]["name"])) . " ha sido subido correctamente.";
                 } else {
                     echo "Lo siento, hubo un error al subir tu archivo.";

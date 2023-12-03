@@ -57,48 +57,6 @@
     <div class="formulario__campo">
         <div class="formulario__contenedor-icono">
             <div class="formulario__icono">
-                <i class="fa-brands fa-facebook"></i>
-            </div>
-            <input 
-                type="text" 
-                class="formulario__input--sociales" 
-                name="redes[facebook] " 
-                placeholder="Facebook" 
-            >
-        </div>
-    </div>
-
-    <div class="formulario__campo">
-        <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
-                <i class="fa-brands fa-twitter"></i>
-            </div>
-            <input 
-                type="text" 
-                class="formulario__input--sociales" 
-                name="redes[twitter] " 
-                placeholder="Twitter" 
-            >
-        </div>
-    </div>
-
-    <div class="formulario__campo">
-        <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
-                <i class="fa-brands fa-youtube"></i>
-            </div>
-            <input 
-                type="text" 
-                class="formulario__input--sociales" 
-                name="redes[youtube] " 
-                placeholder="YouTube" 
-            >
-        </div>
-    </div>
-
-    <div class="formulario__campo">
-        <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
                 <i class="fa-brands fa-instagram"></i>
             </div>
             <input 
@@ -106,33 +64,10 @@
                 class="formulario__input--sociales" 
                 name="redes[instagram] " 
                 placeholder="Instagram" 
+                value="<?php echo $artista->redes['instagram'] ?? ""; ?>"
             >
         </div>
     </div>
-    <div class="formulario__campo">
-        <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
-                <i class="fa-brands fa-tiktok"></i>
-            </div>
-            <input 
-                type="text" 
-                class="formulario__input--sociales" 
-                name="redes[tiktok] " 
-                placeholder="Tiktok" 
-            >
-        </div>
-    </div>
-    <div class="formulario__campo">
-        <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
-                <i class="fa-brands fa-github"></i>
-            </div>
-            <input 
-                type="text" 
-                class="formulario__input--sociales" 
-                name="redes[github] " 
-                placeholder="GitHub" 
-            >
-        </div>
-    </div>
+    
+    
 </fieldset>

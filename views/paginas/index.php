@@ -29,10 +29,11 @@
                         <span class="artista-sociales__ocultar">Facebook</span>
                     </a> 
                 </nav>
-
+                <?php $etiquetas = explode(",", $artista->etiquetas)?>
                 <ul class="artista__listado-generos">
+                    <?php foreach($etiquetas as $etiqueta){ ?>
                         <li class="artista__genero">
-                        <?php echo $artista->etiquetas?>
+                        <?php echo $etiqueta; }?>
                         </li>
                 </ul>
             </div>
