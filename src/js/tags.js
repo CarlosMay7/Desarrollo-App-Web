@@ -3,7 +3,7 @@
 
     if(tagsInput){
         const tagsDiv = document.querySelector("#tags");
-        const tagsInputHidden = document.querySelector('[name="tags"]');
+        const tagsInputHidden = document.querySelector('[name="etiquetas"]');
         let tags = [];
 
         //Recuperar del input oculto

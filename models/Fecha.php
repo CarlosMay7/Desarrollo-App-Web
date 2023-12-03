@@ -5,12 +5,10 @@ class Fecha extends ActiveRecord {
     protected static $tabla = 'fecha';
     protected static $columnasDB = ['id', 'dia', 'mes', 'año'];
 
-
     public $id;
     public $dia;
     public $mes;
     public $año;
-
 
     public function __construct($args = []){
         $this->id = $args['id'] ?? null;

@@ -35,7 +35,7 @@ $router->get('/mensaje', [AuthController::class, 'mensaje']);
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
 
 //Area de administracion
-$router->get('/admin/dashboard', [DashboardController::class, 'index']);
+$router->get('/admin/inicio', [DashboardController::class, 'index']);
 
 $router->get('/admin/artistas', [ArtistasController::class, 'index']);
 $router->get('/admin/artistas/crear', [ArtistasController::class, 'crear']);

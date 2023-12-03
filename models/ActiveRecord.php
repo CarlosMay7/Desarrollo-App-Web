@@ -165,8 +165,6 @@ class ActiveRecord {
         return $resultado;
     }
 
-
-
     //Traer un total de registros
     public static function total($columna = "", $valor = ""){
         $query = "SELECT COUNT(*) FROM " . static::$tabla;

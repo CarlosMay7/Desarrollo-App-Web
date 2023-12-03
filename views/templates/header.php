@@ -13,7 +13,7 @@
                 <?php } else { ?>
                 <a href="/logout" class="header__enlace">Cerrar Sesión</a>
                 <?php if(isAdmin()){ ?>
-                        <a href="/admin/dashboard" class="header__enlace">Administrar</a> 
+                        <a href="/admin/inicio" class="header__enlace">Administrar</a> 
                 <?php } ?>
             <?php } ?>
 

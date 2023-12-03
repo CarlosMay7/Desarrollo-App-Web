@@ -7,6 +7,33 @@
         <?php
             include_once __DIR__ . "/formulario.php";
         ?>
+
+        <div class="formulario__campo">
+            <label for="categoria" class="formulario__label">Sold Out</label>
+
+            <div class="formulario__radio">
+
+                <div>
+                    <label for="sold-out">Si</label>
+                    <input 
+                        type="radio" 
+                        name="sold_out"
+                        value="1"
+                        <?php echo ($concierto->sold_out == 1) ? "checked" : ""; ?>
+                    />
+                </div>
+
+                <div>
+                    <label for="miercoles">No</label>
+                    <input 
+                        type="radio" 
+                        name="sold_out"
+                        value="0"
+                        <?php echo ($concierto->sold_out == 0) ? "checked" : ""; ?>
+                    />
+                </div>
+            </div>
+        </div>
         <input class="formulario__submit formulario__submit--registrar" type="submit" value="Guardar Cambios">
     </form>
 </div>

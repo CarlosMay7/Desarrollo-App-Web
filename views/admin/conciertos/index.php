@@ -21,42 +21,49 @@
         </thead>
 
         <tbody class="table__tbody">
+            <?php if(!empty($conciertos)) { ?>
+                <?php foreach($conciertos as $concierto){ ?>
+                    <tr class="table__tr">
+                        <td class="table__td">
+                            <?= $concierto->ciudad; ?>
+                        </td>
+                        <td class="table__td">
+                        <?= $concierto->recinto; ?>
+                        </td>
+                        <td class="table__td">
+                            <?= $concierto->artista; ?>
+                        </td>
+                        <td class="table__td">
+                            <?= $concierto->dia . "/" . $concierto->mes . "/" . $concierto->año; ?>
+                        </td>
 
-    <!-- ciudad, recinto, artista y fecha -->
+                        <td class="table__td--acciones">
+                            <a class="table__accion table__accion--editar" href="/admin/conciertos/editar?id=<?= $concierto->id ?>">
+                            <i class="fa-solid fa-pencil"></i>
+                            Editar
+                            </a>
 
-            <?php foreach($conciertos as $concierto){ ?>
-
+                            <form method="POST" action="/admin/conciertos/eliminar" class="table__formulario">
+                                <input type="hidden" name="id" value="<?= $concierto->id; ?>">
+                                <button class="table__accion table__accion--eliminar" type="submit">
+                                    <i class="fa-solid fa-circle-xmark"></i>
+                                    Eliminar
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php } ?>
+            <?php } else { ?>
                 <tr class="table__tr">
                     <td class="table__td">
-                        <?= $concierto->ciudad; ?>
-                    </td>
-                    <td class="table__td">
-                    <?= $concierto->recinto; ?>
-                    </td>
-                    <td class="table__td">
-                        <?= $concierto->artista; ?>
-                    </td>
-                    <td class="table__td">
-                        <?= $concierto->dia . "/" . $concierto->mes . "/" . $concierto->año; ?>
-                    </td>
-
-                    <td class="table__td--acciones">
-                        <a class="table__accion table__accion--editar" href="/admin/conciertos/editar?id=<?= $concierto->id ?>">
-                        <i class="fa-solid fa-pencil"></i>
-                        Editar
-                        </a>
-
-                        <form method="POST" action="/admin/conciertos/eliminar" class="table__formulario">
-                            <input type="hidden" name="id" value="<?= $concierto->id; ?>">
-                            <button class="table__accion table__accion--eliminar" type="submit">
-                                <i class="fa-solid fa-circle-xmark"></i>
-                                Eliminar
-                            </button>
-                        </form>
+                        <p class="text-center">No Hay Conciertos Aún</p>
                     </td>
                 </tr>
-            
             <?php } ?>
         </tbody>
     </table>
 </div>
+
+<?php 
+    echo $paginacion;
+?>

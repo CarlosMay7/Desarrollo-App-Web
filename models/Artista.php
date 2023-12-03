@@ -30,8 +30,8 @@ class Artista extends ActiveRecord {
             self::$alertas['error'][] = 'La imagen es obligatoria';
         }
         
-        if(!$this->tags) {
-            self::$alertas['error'][] = 'El Campo áreas es obligatorio';
+        if(!$this->etiquetas) {
+            self::$alertas['error'][] = 'Debe tener al menos una etiqueta';
         }
     
         return self::$alertas;

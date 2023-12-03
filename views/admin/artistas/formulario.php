@@ -9,39 +9,7 @@
             id="nombre" 
             name="nombre" 
             placeholder="Nombre del Artista" 
-        >
-    </div>
-
-    <div class="formulario__campo">
-        <label for="apellido" class="formulario__label">Apellido</label>
-        <input 
-            type="text" 
-            class="formulario__input" 
-            id="apellido" 
-            name="apellido" 
-            placeholder="Apellido del Artista" 
-        >
-    </div>
-
-    <div class="formulario__campo">
-        <label for="ciudad" class="formulario__label">Ciudad</label>
-        <input 
-            type="text" 
-            class="formulario__input" 
-            id="ciudad" 
-            name="ciudad" 
-            placeholder="Ciudad del Artista" 
-        >
-    </div>
-
-    <div class="formulario__campo">
-        <label for="pais" class="formulario__label">País</label>
-        <input 
-            type="text" 
-            class="formulario__input" 
-            id="pais" 
-            name="pais" 
-            placeholder="País del Artista" 
+            value="<?php echo $artista->nombre ?? "";?>"
         >
     </div>
 
@@ -56,11 +24,13 @@
         >
     </div>
 
+    <?php if(isset($artista->imagenActual)){ ?>
 
         <p class="formulario__texto">Imagen Actual:</p>
         <div class="formulario__imagen">
-            <img src="https://tse4.mm.bing.net/th?id=OIP.V5Ao2Q9UoNeRjJOHHGhh5gHaEK&pid=Api&P=0&h=180" alt="">
+            <img loading="lazy" src="<?php echo $_ENV["HOST"] . "/img/artistas/" . $artista->imagen; ?>.jpg" alt="imagen Artista">
         </div>
+    <?php } ?>
 
 </fieldset>
 
@@ -77,7 +47,7 @@
         >
 
         <div id="tags" class="formulario__listado"></div>
-        <input type="hidden" name="tags" value="Reguetón, Pop">
+        <input type="hidden" name="etiquetas" value="<?php echo $artista->etiquetas ?? ""; ?>">
     </div>
 </fieldset>
 

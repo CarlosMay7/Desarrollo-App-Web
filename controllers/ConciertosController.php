@@ -52,6 +52,27 @@ class ConciertosController {
         $concierto = new Concierto;
 
         if($_SERVER["REQUEST_METHOD"] === "POST"){
+            $fecha = Fecha::whereArray([
+                "dia" => $_POST["dia"],
+                "mes" => $_POST["mes"],
+                "año" => $_POST["año"]
+            ]);
+
+            if($fecha) {
+                unset($_POST["dia"]);
+                unset($_POST["mes"]);
+                unset($_POST["año"]);
+                $_POST["fecha_id"] = $fecha[0]->id;
+            } else {
+                $fecha = new Fecha([
+                    "dia" => $_POST["dia"],
+                    "mes" => $_POST["mes"],
+                    "año" => $_POST["año"]
+                ]);
+                $fecha->guardar();
+                $_POST["fecha_id"] = $fecha->id;
+            }
+
             $concierto->sincronizar($_POST);
             $alertas = $concierto->validar();
 
@@ -84,6 +105,10 @@ class ConciertosController {
         }
 
         $concierto = Concierto::find($id);
+        $fecha = Fecha::find($concierto->fecha_id);
+        $concierto->dia = $fecha->dia;
+        $concierto->mes = $fecha->mes;
+        $concierto->año = $fecha->año;
         if(!$concierto){
             header("Location: /admin/conciertos");
         }
