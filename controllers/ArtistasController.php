@@ -46,8 +46,9 @@ class ArtistasController {
             if(!empty($_FILES["imagen"]["tmp_name"])){
                 $carpetaImagenes = "../public/img/artistas/";
                 // basename($_FILES["imagen"]["name"]
-                $archivo = $carpetaImagenes . md5(uniqid(rand(), true));
-                $tipoImagen = strtolower(pathinfo($archivo, PATHINFO_EXTENSION));
+                $nombreArchivo = md5(uniqid(rand(), true));
+                $archivo = $carpetaImagenes . $nombreArchivo;
+                $tipoImagen = strtolower(pathinfo(basename($_FILES["imagen"]["name"]), PATHINFO_EXTENSION));
 
                 // Verificar si es una imagen real o un archivo falso
                 $check = getimagesize($_FILES["imagen"]["tmp_name"]);
@@ -77,6 +78,7 @@ class ArtistasController {
 
             $_POST["redes"] = json_encode($_POST["redes"], JSON_UNESCAPED_SLASHES);
 
+            $_POST["imagen"] = $nombreArchivo;
             $artista->sincronizar($_POST);
 
             //Validar 
