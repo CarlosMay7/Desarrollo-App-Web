@@ -86,7 +86,11 @@
                 transform: scale(1.1);
                 color: darken(v.$blanco, 15%);
             }
+            
+           
         }
+
+        
     }
 
     &__ciudad {
@@ -120,4 +124,11 @@
             transform: scale(1.15);
         }
     }
+}
+
+.agregado{
+    color: orange;
+}
+.sinagregar{
+    color: v.$blanco;
 }

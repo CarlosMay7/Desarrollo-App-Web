@@ -15,8 +15,8 @@
         align-self: flex-start;
         flex-direction: column;
         margin: 2rem;
+        height: auto;
         overflow: scroll;
-        height: fit-content;
     }
     &__conteiner{
         display: flex;

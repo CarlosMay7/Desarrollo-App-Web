@@ -21,7 +21,7 @@
             
         </div>
         </div>
-        <form>
+        <form action="/mis-conciertos" method ="POST">
             <input type="hidden" name="id" value="<?= $concierto->id; ?>">
             <input type="checkbox" class = "mis-conciertos__eliminar" checked="">
         </form>
@@ -34,7 +34,7 @@
   </div>
 
   <div class="mis-conciertos__agregar">
-        <form action="">
+        <form action="/mis-conciertos" method ="POST">
             <input type="submit" value="Agregar Conciertos" class="mis-conciertos__boton">
 
         </form>

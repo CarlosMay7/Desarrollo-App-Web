@@ -95,6 +95,7 @@ class PaginasController {
 
         
         }
+
         $router->render("/paginas/mis-conciertos", [
             "titulo" => "Revisa tus conciertos aquí",
             "misConciertos" => $misConciertos

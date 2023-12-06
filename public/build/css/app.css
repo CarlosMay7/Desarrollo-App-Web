@@ -420,8 +420,8 @@ h3 {
   align-self: flex-start;
   flex-direction: column;
   margin: 2rem;
+  height: auto;
   overflow: scroll;
-  height: fit-content;
 }
 .mis-conciertos__conteiner {
   display: flex;
@@ -562,6 +562,14 @@ h3 {
 }
 .concierto__card:hover .concierto__imagen-artista {
   transform: scale(1.15);
+}
+
+.agregado {
+  color: orange;
+}
+
+.sinagregar {
+  color: #FFFFFF;
 }
 
 .artistas__grid {
