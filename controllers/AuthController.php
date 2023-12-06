@@ -5,7 +5,24 @@ use MVC\Router;
 use Model\Usuario;
 use Classes\Email;
 
+/**
+ * El controlador de la autenticación del programa
+ * 
+ * 
+ * @version 1.0.0
+ * 
+ */
+
 class AuthController {
+
+/**
+ * Muestra la página de login del programa y se encarga de validar el usuario 
+ * que intenta iniciar sesión
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
 
     public static function login(Router $router) {
 
@@ -57,6 +74,16 @@ class AuthController {
         ]);
     }
 
+/**
+ * Muestra la página de registro de un nuevo usuario y se encarga de validar el usuario 
+ * para crear una nueva cuenta y mandar el correo de confirmación
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
+
+
     public static function registro(Router $router) {
         $alertas = [];
         $usuario = new Usuario;
@@ -104,6 +131,14 @@ class AuthController {
             'alertas' => $alertas
         ]);
     }
+/**
+ * Muestra la página de olvide mi contraseña y se encarga de validar el usuario
+ * para mandar el correo de reestablecer la contraseña
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
 
     public static function olvide(Router $router) {
         $alertas = [];
@@ -149,6 +184,14 @@ class AuthController {
             'alertas' => $alertas
         ]);
     }
+/**
+ * Muestra la página de reestablecer contraseña y se encarga de validar el usuario 
+ * para reestablecer la contraseña 
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
 
     public static function reestablecer(Router $router) {
 
@@ -200,6 +243,13 @@ class AuthController {
             'token_valido' => $token_valido
         ]);
     }
+/**
+ * Muestra la página de mensaje de cuenta creada exitosamente
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
 
     public static function mensaje(Router $router) {
 
@@ -207,6 +257,13 @@ class AuthController {
             'titulo' => 'Cuenta Creada Exitosamente'
         ]);
     }
+/**
+ * Muestra la página donde se confirma la cuenta del usuario
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
 
     public static function confirmar(Router $router) {
         
@@ -239,6 +296,14 @@ class AuthController {
             'alertas' => Usuario::getAlertas()
         ]);
     }
+
+/**
+ * Se encarga de cerrar la sesión del usuario
+ * 
+ * 
+ * @return void
+ * 
+ */
 
     public static function logout() {
         session_start();

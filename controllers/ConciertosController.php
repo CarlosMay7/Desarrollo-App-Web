@@ -8,7 +8,22 @@ use Model\Fecha;
 use Model\Concierto;
 use Model\Artista;
 
+/**
+ * El controlador del CRUD de conciertos del panel de administración
+ * 
+ * 
+ * @version 1.0.0
+ * 
+ */
+
 class ConciertosController {
+ /**
+ * Muestra la página de la lista conciertos del panel de administración
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
     public static function index(Router $router){
 
         if(!isAdmin()){
@@ -42,6 +57,15 @@ class ConciertosController {
             "paginacion" => $paginacion->paginacion(),
         ]);
     }
+
+/**
+ * Muestra la página de crear conciertos del panel de administración y 
+ * se encarga de guardar los datos del concierto en la base de datos
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
 
     public static function crear(Router $router){
         if(!isAdmin()){
@@ -91,7 +115,14 @@ class ConciertosController {
             "alertas" => $alertas
         ]);
     }
-
+/**
+ * Muestra la página de editar conciertos del panel de administración y
+ * se encarga de actualizar los datos del concierto en la base de datos
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
     public static function editar(Router $router){
         if(!isAdmin()){
             header("Location: /login");
@@ -135,6 +166,15 @@ class ConciertosController {
             "concierto" => $concierto
         ]);
     }
+
+/**
+ * 
+ * Se encarga de eliminar los datos del concierto en la base de datos
+ * 
+ * 
+ * @return void
+ * 
+ */
 
     public static function eliminar (){
 

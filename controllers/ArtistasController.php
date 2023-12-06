@@ -6,7 +6,22 @@ use Model\Artista;
 use MVC\Router;
 use Classes\Paginacion;
 
+/**
+ * El controlador deL CRUD de artistas del panel de administración
+ * 
+ * 
+ * @version 1.0.0
+ * 
+ */
+
 class ArtistasController {
+/**
+ * Muestra la página de la lista de artistas del panel de administración
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
     public static function index(Router $router){
         if(!isAdmin()){
             header("Location: /login");
@@ -33,6 +48,15 @@ class ArtistasController {
             "paginacion" => $paginacion->paginacion()
         ]);
     }
+
+/**
+ * Muestra la página de crear artistas del panel de administración y
+ * se encarga de guardar los datos del artista en la base de datos
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
 
     public static function crear(Router $router){
         if(!isAdmin()){
@@ -111,7 +135,14 @@ class ArtistasController {
         ]);
     }
 
-
+/**
+ * Muestra la página de editar artistas del panel de administración y
+ * se encarga de actualizar los datos del artista en la base de datos
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
 
     public static function editar (Router $router){
         if(!isAdmin()){
@@ -201,6 +232,14 @@ class ArtistasController {
             "redes" => $redes
         ]);
     }
+/**
+ * 
+ * Se encarga de eliminar los datos del artista en la base de datos
+ * 
+ * 
+ * @return void
+ * 
+ */
 
     public static function eliminar (){
         if(!isAdmin()){

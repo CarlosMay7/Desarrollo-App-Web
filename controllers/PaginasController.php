@@ -9,7 +9,23 @@ use Model\ConciertosDeTour;
 use Model\Usuario;
 use MVC\Router;
 
+/**
+ * El controlador de las páginas publicas del programa
+ * 
+ * 
+ * @version 1.0.0
+ * 
+ */
+
 class PaginasController {
+
+/**
+ * Muestra la página principal del programa
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
     public static function index(Router $router) {
         
         $conciertos = Concierto::ordenar("fecha_id", "ASC");
@@ -34,14 +50,26 @@ class PaginasController {
             "artistas" => $artistas
         ]);
     }
-
+/**
+ * Muestra la página sobre nosotros del programa
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
     public static function nosotros(Router $router) {
 
         $router->render("/paginas/concentus", [
             "titulo" => "Sobre Concentus"
         ]);
     }
-
+/**
+ * Función para guardar los conciertos seleccionados por el usuario
+ * 
+ * 
+ * @return void
+ * 
+ */
     public static function guardarMisConciertos() {
         $misConciertos = implode(",",$_POST["conciertos"]);
         $usuario = Usuario::find($_SESSION["id"]);
@@ -50,6 +78,14 @@ class PaginasController {
 
         header("Location: /mis-conciertos");
     }
+
+/**
+ * Muestra la página de los conciertos guardados por el usuario del programa
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
     public static function misConciertos(Router $router) {
 
         if(!isAuth()){
@@ -102,7 +138,13 @@ class PaginasController {
         ]);
     }
     
-
+/**
+ * Muestra la página de la lista de todos los conciertos almacenados en la base de datos
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
     public static function conciertos(Router $router) {
         $conciertos = Concierto::ordenar("fecha_id", "ASC");
          
@@ -127,14 +169,26 @@ class PaginasController {
             "conciertos" => $conciertosPorFecha
         ]);
     }
-
+/**
+ * Muestra un error 404 si la página no existe
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
     public static function error(Router $router) {
 
         $router->render("/paginas/error", [
             "titulo" => "Página No Encontrada"
         ]);
     }
-
+/**
+ * Muestra una página generada dinamicamente con el id del concierto seleccionado, que muestra toda la información del concierto
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
     public static function listaConciertos(Router $router) {
        
         $id = $_GET["concierto"];
@@ -161,7 +215,14 @@ class PaginasController {
             "concierto" => $concierto
         ]);
     }
-
+/**
+ * Muestra una página generada dinamicamente con el id del artista seleccionado, que muestra toda la información del artista
+ * y sus conciertos relacionados con el artista
+ * 
+ * @param Router $router Objeto Router para renderizar la vista
+ * @return void
+ * 
+ */
     public static function descripcionArtistas(Router $router) {
         $id = $_GET["artista"];
         $artista = Artista::find($id);
