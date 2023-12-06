@@ -74,14 +74,17 @@
 
     &__introduccion {
         font-size: 1.6rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        color: v.$blanco;
+        display: flex;
+        justify-content: space-between;
 
-        @include m.tablet{
-            -webkit-line-clamp: 2;
+        svg {
+            transition: transform 300ms ease,
+                        color 300ms ease;
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.1);
+                color: darken(v.$blanco, 15%);
+            }
         }
     }
 

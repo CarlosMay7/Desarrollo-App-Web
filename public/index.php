@@ -60,6 +60,7 @@ $router->get('/api/artista', [ApiArtistas::class, 'artista']);
 $router->get('/', [PaginasController::class, 'index']);
 $router->get('/nosotros', [PaginasController::class, 'nosotros']);
 $router->get('/mis-conciertos', [PaginasController::class, 'misConciertos']);
+$router->post('/mis-conciertos', [PaginasController::class, 'guardarMisConciertos']);
 $router->get('/lista-conciertos', [PaginasController::class, 'listaConciertos']);
 $router->get('/conciertos', [PaginasController::class, 'conciertos']);
 

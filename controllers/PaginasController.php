@@ -6,6 +6,7 @@ use Model\Artista;
 use Model\Fecha;
 use Model\Tour;
 use Model\ConciertosDeTour;
+use Model\Usuario;
 use MVC\Router;
 
 class PaginasController {
@@ -40,15 +41,44 @@ class PaginasController {
             "titulo" => "Sobre Concentus"
         ]);
     }
+
+    public static function guardarMisConciertos() {
+        $misConciertos = implode(",",$_POST["conciertos"]);
+        $usuario = Usuario::find($_SESSION["id"]);
+        $usuario->conciertos = $misConciertos;
+        $usuario->guardar();
+
+        header("Location: /mis-conciertos");
+    }
     public static function misConciertos(Router $router) {
 
         if(!isAuth()){
             header("Location: /login");
         }
 
+        $usuario = Usuario::find($_SESSION["id"]);
+
+        $misConciertos = [];
+
+        if($usuario->conciertos != "") {
+            $conciertosUsuario = explode(",", $usuario->conciertos);
+        }
+
+        if(isset($_COOKIE["mis-conciertos"])){
+            $conciertosAgregados = json_decode($_COOKIE["mis-conciertos"], true);
+            $conciertos = array_unique(array_merge($conciertosUsuario, $conciertosAgregados));
+            foreach($conciertos as $concierto) {
+                if(!in_array($concierto, $misConciertos)) {
+                    $misConciertos[] = Concierto::find($concierto);
+                } else {
+                    continue;
+                }
+            }
+        }
 
         $router->render("/paginas/mis-conciertos", [
-            "titulo" => "Revisa tus conciertos aquí"
+            "titulo" => "Revisa tus conciertos aquí",
+            "misConciertos" => $misConciertos
         ]);
     }
 
