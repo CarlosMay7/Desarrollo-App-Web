@@ -421,7 +421,7 @@ h3 {
   flex-direction: column;
   margin: 2rem;
   overflow: scroll;
-  height: 70rem;
+  height: fit-content;
 }
 .mis-conciertos__conteiner {
   display: flex;

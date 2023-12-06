@@ -16,7 +16,7 @@
         flex-direction: column;
         margin: 2rem;
         overflow: scroll;
-        height: 70rem;
+        height: fit-content;
     }
     &__conteiner{
         display: flex;

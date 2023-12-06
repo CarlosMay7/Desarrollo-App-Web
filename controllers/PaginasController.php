@@ -59,15 +59,19 @@ class PaginasController {
 
         $misConciertos = [];
 
-        if($usuario->conciertosGuardados != "") {
+        if($usuario->conciertosGuardados != NULL) {
             $conciertosUsuario = explode(",", $usuario->conciertosGuardados);
         }else{
             $conciertosUsuario = [];
         }
 
-        if(isset($_COOKIE["mis-conciertos"])){
+        if(isset($_COOKIE["mis-conciertos"]) && $_COOKIE["mis-conciertos"] != "null"){
+            if($conciertosUsuario != NULL){
             $conciertosAgregados = json_decode($_COOKIE["mis-conciertos"], true);
             $conciertos = array_unique(array_merge($conciertosUsuario, $conciertosAgregados));
+        }else{
+            $conciertos = json_decode($_COOKIE["mis-conciertos"], true);
+        }
             foreach($conciertos as $concierto) {
                 if(!in_array($concierto, $misConciertos)) {
                     $misConciertos[] = Concierto::find($concierto);
@@ -89,8 +93,8 @@ class PaginasController {
                 $concierto = transformMonthsforOne($concierto);
             }
 
-        }   
         
+        }
         $router->render("/paginas/mis-conciertos", [
             "titulo" => "Revisa tus conciertos aquí",
             "misConciertos" => $misConciertos

@@ -18,6 +18,7 @@
             <div class="mis-conciertos__info">
             <p class="mis-conciertos__artista"><?php echo $concierto->nombre?></p>
             <p class="mis-conciertos__ciudad"> <?php echo $concierto->ciudad . " - " . $concierto->recinto ?></p>
+            
         </div>
         </div>
         <form>
@@ -35,7 +36,7 @@
   <div class="mis-conciertos__agregar">
         <form action="">
             <input type="submit" value="Agregar Conciertos" class="mis-conciertos__boton">
-            
+
         </form>
   </div>
 <?php } ?>
