@@ -2,6 +2,9 @@
 @use 'base/mixins' as m;
 
 .navegacion {
+    @media print {
+        display: none;
+    }
     display: flex;
     flex-direction: column;
     

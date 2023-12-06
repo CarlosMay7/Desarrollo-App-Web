@@ -4,7 +4,7 @@ namespace Model;
 
 class Usuario extends ActiveRecord {
     protected static $tabla = 'usuarios';
-    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'password', 'confirmado', 'token', 'admin'];
+    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'password', 'confirmado', 'token', 'admin', 'conciertosGuardados'];
 
     public $id;
     public $nombre;
@@ -17,7 +17,14 @@ class Usuario extends ActiveRecord {
     public $confirmado;
     public $token;
     public $admin;
-
+    public $conciertosGuardados;
+ /**
+ * Constructor de un nuevo objeto Usuario
+ * 
+ * @param $args array Arreglo con los datos a insertar en la base de datos
+ * @return Usuario Objeto Usuario
+ * 
+ */
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
@@ -30,8 +37,13 @@ class Usuario extends ActiveRecord {
         $this->token = $args['token'] ?? '';
         $this->admin = $args['admin'] ?? '';
     }
-
-    // Validar el Login de Usuarios
+    /**
+    * validación de los datos ingresados para iniciar sesión
+    * 
+    *
+    * @return self::$alertas array Arreglo con los mensajes de error
+    * 
+    */
     public function validarLogin() {
         if(!$this->email) {
             self::$alertas['error'][] = 'El Email del Usuario es Obligatorio';
@@ -45,8 +57,14 @@ class Usuario extends ActiveRecord {
         return self::$alertas;
 
     }
+   /**
+    * validación de los datos ingresados para crear un nuevo usuario
+    * 
+    *
+    * @return self::$alertas array Arreglo con los mensajes de error
+    * 
+    */
 
-    // Validación para cuentas nuevas
     public function validar_cuenta() {
         if(!$this->nombre) {
             self::$alertas['error'][] = 'El Nombre es Obligatorio';
@@ -69,7 +87,13 @@ class Usuario extends ActiveRecord {
         return self::$alertas;
     }
 
-    // Valida un email
+   /**
+    * validación de los datos ingresados para validar que el email exista en la base de datos
+    * 
+    *
+    * @return self::$alertas array Arreglo con los mensajes de error
+    * 
+    */
     public function validarEmail() {
         if(!$this->email) {
             self::$alertas['error'][] = 'El Email es Obligatorio';
@@ -79,8 +103,13 @@ class Usuario extends ActiveRecord {
         }
         return self::$alertas;
     }
-
-    // Valida el Password 
+   /**
+    * validación de los datos ingresados para validar que es la contraseña correcta
+    * 
+    *
+    * @return self::$alertas array Arreglo con los mensajes de error
+    * 
+    */
     public function validarPassword() {
         if(!$this->password) {
             self::$alertas['error'][] = 'La Contraseña No Debe Ir Vacía';
@@ -90,7 +119,13 @@ class Usuario extends ActiveRecord {
         }
         return self::$alertas;
     }
-
+   /**
+    * validación de los datos ingresados para cambiar de constraseña
+    * 
+    *
+    * @return self::$alertas array Arreglo con los mensajes de error
+    * 
+    */
     public function nuevo_password() : array {
         if(!$this->password_actual) {
             self::$alertas['error'][] = 'La Contraseña Actual No Puede Ir Vacía';
@@ -103,18 +138,35 @@ class Usuario extends ActiveRecord {
         }
         return self::$alertas;
     }
-
-    // Comprobar el password
+   /**
+    * validación que comprueba que las contraseñas ingresas sean iguales
+    * 
+    *
+    * @return bool
+    * 
+    */
     public function comprobar_password() : bool {
         return password_verify($this->password_actual, $this->password );
     }
-
+     /**
+    * Función que encripta la contraseña del usuario antes de guardarla en la base de datos
+    * 
+    *
+    * @return void
+    * 
+    */
     // Hashea el password
     public function hashPassword() : void {
         $this->password = password_hash($this->password, PASSWORD_BCRYPT);
     }
 
-    // Generar un Token
+     /**
+    * función que crea un token para validar la cuenta del usuario
+    * 
+    *
+    * @return void
+    * 
+    */
     public function crearToken() : void {
         $this->token = uniqid();
     }

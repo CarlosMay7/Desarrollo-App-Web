@@ -22,11 +22,11 @@ class Email {
         // create a new object
         $mail = new PHPMailer();
         $mail->isSMTP();  
-        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->Host = $_ENV['MAILT_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = 'f8e92f68474ba2';
-        $mail->Password = '4316e4060555ba';
+        $mail->Port = $_ENV['MAILT_PORT'];
+        $mail->Username = $_ENV['MAILT_USER'];
+        $mail->Password = $_ENV['MAILT_PASS'];
 
         $mail->setFrom('cuentas@concentus.com');
         $mail->addAddress($this->email, $this->nombre);
@@ -38,7 +38,7 @@ class Email {
 
         $contenido = '<html>';
         $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has Registrado Correctamente tu cuenta en Concentus; pero es necesario confirmarla</p>";
-        $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a></p>";       
+        $contenido .= "<p>Presiona aquí: <a href='" . $_ENV['HOST'] . "/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a></p>";       
         $contenido .= "<p>Si tu no creaste esta cuenta, puedes ignorar el mensaje</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
@@ -53,11 +53,11 @@ class Email {
         // create a new object
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->Host = $_ENV['MAILT_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = 'f8e92f68474ba2';
-        $mail->Password = '4316e4060555ba';
+        $mail->Port = $_ENV['MAILT_PORT'];
+        $mail->Username = $_ENV['MAILT_USER'];
+        $mail->Password = $_ENV['MAILT_PASS'];
     
         $mail->setFrom('cuentas@concentus.com');
         $mail->addAddress($this->email, $this->nombre);
@@ -69,7 +69,7 @@ class Email {
 
         $contenido = '<html>';
         $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has solicitado reestablecer tu contraseña, sigue el siguiente enlace para hacerlo.</p>";
-        $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/reestablecer?token=" . $this->token . "'>Reestablecer Contraseña</a></p>";        
+        $contenido .= "<p>Presiona aquí: <a href='" . $_ENV['HOST'] . "/reestablecer?token=" . $this->token . "'>Reestablecer Password</a></p>";        
         $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;

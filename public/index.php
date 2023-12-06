@@ -35,7 +35,7 @@ $router->get('/mensaje', [AuthController::class, 'mensaje']);
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
 
 //Area de administracion
-$router->get('/admin/dashboard', [DashboardController::class, 'index']);
+$router->get('/admin/inicio', [DashboardController::class, 'index']);
 
 $router->get('/admin/artistas', [ArtistasController::class, 'index']);
 $router->get('/admin/artistas/crear', [ArtistasController::class, 'crear']);
@@ -54,15 +54,17 @@ $router->post('/admin/conciertos/eliminar', [ConciertosController::class, 'elimi
 //API 
 $router->get('/api/conciertos-horario', [Apiconciertos::class, 'index']);
 $router->get('/api/artistas', [ApiArtistas::class, 'index']);
-$router->get('/api/ponente', [ApiArtistas::class, 'ponente']);
+$router->get('/api/artista', [ApiArtistas::class, 'artista']);
 
+$router->post('/mis-conciertos', [PaginasController::class, 'misConciertos']);
 //Area Publica
 $router->get('/', [PaginasController::class, 'index']);
 $router->get('/nosotros', [PaginasController::class, 'nosotros']);
 $router->get('/mis-conciertos', [PaginasController::class, 'misConciertos']);
+$router->post('/mis-conciertos', [PaginasController::class, 'guardarMisConciertos']);
 $router->get('/lista-conciertos', [PaginasController::class, 'listaConciertos']);
+$router->get('/descrip-artista', [PaginasController::class, 'descripcionArtistas']);
 $router->get('/conciertos', [PaginasController::class, 'conciertos']);
-
 $router->get('/404', [PaginasController::class, 'error']);
 
 $router->comprobarRutas();

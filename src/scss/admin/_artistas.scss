@@ -1,11 +1,11 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
-.listado-ponentes {
+.listado-artistas {
     @include m.reset-lista;
     @include m.grid(1, 1rem);
 
-    &__ponente {
+    &__artista {
         color: v.$azul;
         border: 1px solid v.$azul;
         padding: 1rem;
@@ -17,7 +17,7 @@
         }
 
         &--seleccionado {
-            @extend .listado-ponentes__ponente;
+            @extend .listado-artistas__artista;
             background-color: v.$azul;
             color: v.$blanco;
         }

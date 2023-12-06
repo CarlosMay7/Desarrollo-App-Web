@@ -54,6 +54,7 @@
         font-weight: v.$bold;
     }
 
+    
     &__informacion {
         padding: 2rem;
         background-color: v.$azul;
@@ -74,15 +75,17 @@
 
     &__introduccion {
         font-size: 1.6rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        color: v.$blanco;
+        display: flex;
+        justify-content: space-between;
 
-        @include m.tablet{
-            -webkit-line-clamp: 2;
-        }
+        svg {
+            transition: transform 300ms ease,
+                        color 300ms ease;
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.1);
+            }
+        }        
     }
 
     &__ciudad {
@@ -102,17 +105,10 @@
         color: v.$blanco;
         text-align: end;
         font-weight: v.$bold;
+        text-decoration: none;
     }
 
-    &__agregar {
-        @include m.boton(v.$blanco, v.$negro);
-        margin-top: 1rem;
-
-        &:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-    }
+  
 }
 .concierto__card:hover {
     .concierto {
@@ -124,4 +120,11 @@
             transform: scale(1.15);
         }
     }
+}
+
+.agregado{
+    color: orange;
+}
+.sinagregar{
+    color: v.$blanco;
 }

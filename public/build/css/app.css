@@ -414,6 +414,49 @@ h3 {
   background-color: #0063c1;
   cursor: pointer;
 }
+.mis-conciertos__listado {
+  border: 1px solid #007df4;
+  padding: 2rem 0;
+  height: auto;
+  width: 80%;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+.mis-conciertos__nombre-concierto {
+  width: 80%;
+}
+.mis-conciertos__concierto {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem;
+}
+.mis-conciertos__check {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007df4;
+  color: #FFFFFF;
+  transition: background-color 500ms ease;
+}
+.mis-conciertos__check:hover {
+  cursor: pointer;
+}
+.mis-conciertos__boton {
+  display: flex;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  justify-content: flex-end;
+  background-color: #007df4;
+  color: #FFFFFF;
+  border: none;
+  transition: background-color 500ms ease;
+}
+.mis-conciertos__boton:hover {
+  cursor: pointer;
+  background-color: #0063c1;
+}
 
 .agenda {
   padding: 1rem 0;
@@ -474,16 +517,15 @@ h3 {
 }
 .concierto__introduccion {
   font-size: 1.6rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
 }
-@media (min-width: 768px) {
-  .concierto__introduccion {
-    -webkit-line-clamp: 2;
-  }
+.concierto__introduccion svg {
+  transition: transform 300ms ease, color 300ms ease;
+}
+.concierto__introduccion svg:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 .concierto__ciudad {
   color: #FFFFFF;
@@ -500,29 +542,7 @@ h3 {
   color: #FFFFFF;
   text-align: end;
   font-weight: 700;
-}
-.concierto__agregar {
-  background-color: #FFFFFF;
-  padding: 1.5rem 4rem;
-  color: #1a1b15;
-  font-size: 1.8rem;
-  font-weight: 700;
-  border: none;
-  transition-property: background-color;
-  transition-duration: 0.3s;
-  text-align: center;
-  width: 100%;
-  display: inline-block;
-  border-radius: 0.7rem;
-  margin-top: 1rem;
-}
-.concierto__agregar:hover {
-  background-color: #e6e6e6;
-  cursor: pointer;
-}
-.concierto__agregar:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  text-decoration: none;
 }
 
 .concierto__card:hover .concierto__informacion {
@@ -532,6 +552,19 @@ h3 {
   transform: scale(1.15);
 }
 
+.agregado {
+  color: orange;
+}
+
+.sinagregar {
+  color: #FFFFFF;
+}
+
+@media print {
+  .artistas {
+    display: none;
+  }
+}
 .artistas__grid {
   width: min(95%, 140rem);
   margin: 0 auto;
@@ -578,6 +611,9 @@ h3 {
 .artista:nth-child(4n+4) {
   background-image: image-set(url("/build/img/bg_4.avif") 1x, url("/build/img/bg_4.webp") 1x, url("/build/img/bg_4.png") 1x);
 }
+.artista__nombre {
+  color: #496490;
+}
 .artista__imagen {
   min-width: 350px;
 }
@@ -585,6 +621,10 @@ h3 {
   .artista__imagen {
     min-width: unset;
   }
+}
+.artista__imagen-autor {
+  max-height: 50%;
+  object-fit: contain;
 }
 .artista__ubicacion {
   color: #64748B;
@@ -670,6 +710,86 @@ h3 {
 }
 .listaconciertos__texto {
   line-height: 2;
+}
+.listaconciertos__agregar {
+  display: block;
+  border-radius: 60%;
+  cursor: pointer;
+  color: red;
+  width: 3rem;
+  height: 3rem;
+  background-color: #007df4;
+}
+
+.descripcionartistas {
+  /* Change background color of buttons on hover */
+  /* Create an active/current tablink class */
+  /* Style the tab content */
+}
+.descripcionartistas__grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .descripcionartistas__grid {
+    padding: 0 4rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.descripcionartistas__imagen {
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .descripcionartistas__imagen {
+    margin: 0 7rem;
+  }
+}
+.descripcionartistas__texto {
+  line-height: 2;
+}
+.descripcionartistas__link, .descripcionartistas__link:visited, .descripcionartistas__link:focus, .descripcionartistas__link:active {
+  color: inherit;
+  text-decoration: none;
+}
+.descripcionartistas__link:hover {
+  color: #007df4;
+  text-decoration: underline;
+}
+.descripcionartistas .tab {
+  width: fit-content;
+  overflow: hidden;
+  border: 1px solid #007df4;
+  background-color: #007df4;
+}
+.descripcionartistas .tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: #FFFFFF;
+}
+.descripcionartistas .tab button:hover {
+  background-color: #FFFFFF;
+  color: #007df4;
+}
+.descripcionartistas .tab button.active {
+  background-color: #FFFFFF;
+  color: #007df4;
+  display: block;
+}
+.descripcionartistas .tabcontent {
+  display: none;
+  padding: 6px 12px;
 }
 
 .formulario {
@@ -871,6 +991,11 @@ h3 {
     height: 9rem;
   }
 }
+@media print {
+  .header__navegacion {
+    display: none;
+  }
+}
 .header__enlace, .header__submit {
   all: unset;
   color: #FFFFFF;
@@ -1036,6 +1161,11 @@ h3 {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+@media print {
+  .navegacion {
+    display: none;
+  }
 }
 @media (min-width: 768px) {
   .navegacion {
@@ -1363,7 +1493,7 @@ h3 {
   cursor: pointer;
 }
 
-.listado-ponentes {
+.listado-artistas {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1371,17 +1501,17 @@ h3 {
   gap: 1rem;
   grid-template-columns: repeat(1, 1fr);
 }
-.listado-ponentes__ponente, .listado-ponentes__ponente--seleccionado {
+.listado-artistas__artista, .listado-artistas__artista--seleccionado {
   color: #007df4;
   border: 1px solid #007df4;
   padding: 1rem;
   border-radius: 1rem;
   text-align: center;
 }
-.listado-ponentes__ponente:hover, .listado-ponentes__ponente--seleccionado:hover {
+.listado-artistas__artista:hover, .listado-artistas__artista--seleccionado:hover {
   cursor: pointer;
 }
-.listado-ponentes__ponente--seleccionado {
+.listado-artistas__artista--seleccionado {
   background-color: #007df4;
   color: #FFFFFF;
 }
@@ -1437,6 +1567,53 @@ h3 {
   font-weight: 900;
   font-size: 6rem;
   text-align: center;
+}
+
+.paginacion {
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .paginacion {
+    justify-content: flex-end;
+  }
+}
+.paginacion__enlace {
+  color: #007df4;
+  font-size: 1.7rem;
+}
+.paginacion__enlace--texto {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #007df4;
+}
+.paginacion__enlace--texto:hover {
+  color: #FFFFFF;
+  background-color: #007df4;
+}
+.paginacion__enlace--numero {
+  font-weight: 700;
+  display: none;
+}
+@media (min-width: 768px) {
+  .paginacion__enlace--numero {
+    display: inline;
+  }
+}
+.paginacion__enlace--actual {
+  color: #64748B;
+  font-weight: 700;
+  display: none;
+}
+@media (min-width: 768px) {
+  .paginacion__enlace--actual {
+    display: inline;
+  }
 }
 
 .conciertos-registro {

@@ -13,38 +13,45 @@
         <thead class="table__thead">
             <tr>
                 <th scope="col" class="table__th">Nombre</th>
-                <th scope="col" class="table__th">Ubicación</th>
                 <th scope="col" class="table__th"></th>
             </tr>
         </thead>
 
         <tbody class="table__tbody">
-            <?php for($i=0; $i<8; $i++){ ?>
+            <?php if(!empty($artistas)){ ?>
+                <?php foreach($artistas as $artista){ ?>
+                    <tr class="table__tr">
+                        <td class="table__td">
+                            <?= $artista->nombre; ?>
+                        </td>
+
+                        <td class="table__td--acciones">
+                            <a class="table__accion table__accion--editar" href="/admin/artistas/editar?id=<?= $artista->id ?>">
+                            <i class="fa-solid fa-pencil"></i>
+                            Editar
+                            </a>
+
+                            <form method="POST" action="/admin/artistas/eliminar" class="table__formulario">
+                                <input type="hidden" name="id" value="<?= $artista->id; ?>">
+                                <button class="table__accion table__accion--eliminar" type="submit">
+                                    <i class="fa-solid fa-circle-xmark"></i>
+                                    Eliminar
+                                </button>
+                            </form>
+                        </td>
+                    </tr>   
+                <?php } ?>
+            <?php } else { ?>
                 <tr class="table__tr">
                     <td class="table__td">
-                        Benito Martinez
-                    </td>
-
-                    <td class="table__td">
-                        Puerto Rico
-                    </td>
-
-                    <td class="table__td--acciones">
-                        <a class="table__accion table__accion--editar" href="/admin/artistas/editar?id=#">
-                        <i class="fa-solid fa-user-pen"></i>
-                        Editar
-                        </a>
-
-                        <form method="POST" action="/admin/artistas/eliminar" class="table__formulario">
-                            <input type="hidden" name="id" value="#">
-                            <button class="table__accion table__accion--eliminar" type="submit">
-                                <i class="fa-solid fa-circle-xmark"></i>
-                                Eliminar
-                            </button>
-                        </form>
+                        <p class="text-center">No Hay Conciertos Aún</p>
                     </td>
                 </tr>
             <?php } ?>
         </tbody>
     </table>
 </div>
+
+<?php 
+    echo $paginacion;
+?>

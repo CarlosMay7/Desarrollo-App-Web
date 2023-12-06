@@ -9,39 +9,7 @@
             id="nombre" 
             name="nombre" 
             placeholder="Nombre del Artista" 
-        >
-    </div>
-
-    <div class="formulario__campo">
-        <label for="apellido" class="formulario__label">Apellido</label>
-        <input 
-            type="text" 
-            class="formulario__input" 
-            id="apellido" 
-            name="apellido" 
-            placeholder="Apellido del Artista" 
-        >
-    </div>
-
-    <div class="formulario__campo">
-        <label for="ciudad" class="formulario__label">Ciudad</label>
-        <input 
-            type="text" 
-            class="formulario__input" 
-            id="ciudad" 
-            name="ciudad" 
-            placeholder="Ciudad del Artista" 
-        >
-    </div>
-
-    <div class="formulario__campo">
-        <label for="pais" class="formulario__label">País</label>
-        <input 
-            type="text" 
-            class="formulario__input" 
-            id="pais" 
-            name="pais" 
-            placeholder="País del Artista" 
+            value="<?php echo $artista->nombre ?? "";?>"
         >
     </div>
 
@@ -56,16 +24,30 @@
         >
     </div>
 
+    <?php if($artista->imagen != ""){ ?>
 
         <p class="formulario__texto">Imagen Actual:</p>
         <div class="formulario__imagen">
-            <img src="https://tse4.mm.bing.net/th?id=OIP.V5Ao2Q9UoNeRjJOHHGhh5gHaEK&pid=Api&P=0&h=180" alt="">
+            <img loading="lazy" src="<?php echo $_ENV["HOST"] . "/img/artistas/" . $artista->imagen; ?>" alt="imagen Artista">
         </div>
+    <?php } ?>
 
 </fieldset>
 
 <fieldset class="formulario__fieldset">
     <legend class="formulario__legend">Información Personal Extra</legend>
+
+    <div class="formulario__campo">
+        <label for="descripcion" class="formulario__label">Descripción</label>
+        <input 
+            type="text" 
+            class="formulario__input" 
+            id="descripcion" 
+            name="descripcion" 
+            placeholder="Descripción del Artista" 
+            value="<?php echo $artista->descripcion ?? "";?>"
+        >
+    </div>
 
     <div class="formulario__campo">
         <label for="tags_input" class="formulario__label">Géneros (Separados por comas)</label>
@@ -77,54 +59,13 @@
         >
 
         <div id="tags" class="formulario__listado"></div>
-        <input type="hidden" name="tags" value="Reguetón, Pop">
+        <input type="hidden" name="etiquetas" value="<?php echo $artista->etiquetas ?? ""; ?>">
     </div>
+
 </fieldset>
 
 <fieldset class="formulario__fieldset">
 <legend class="formulario__legend">Información Extra</legend>
-
-    <div class="formulario__campo">
-        <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
-                <i class="fa-brands fa-facebook"></i>
-            </div>
-            <input 
-                type="text" 
-                class="formulario__input--sociales" 
-                name="redes[facebook] " 
-                placeholder="Facebook" 
-            >
-        </div>
-    </div>
-
-    <div class="formulario__campo">
-        <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
-                <i class="fa-brands fa-twitter"></i>
-            </div>
-            <input 
-                type="text" 
-                class="formulario__input--sociales" 
-                name="redes[twitter] " 
-                placeholder="Twitter" 
-            >
-        </div>
-    </div>
-
-    <div class="formulario__campo">
-        <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
-                <i class="fa-brands fa-youtube"></i>
-            </div>
-            <input 
-                type="text" 
-                class="formulario__input--sociales" 
-                name="redes[youtube] " 
-                placeholder="YouTube" 
-            >
-        </div>
-    </div>
 
     <div class="formulario__campo">
         <div class="formulario__contenedor-icono">
@@ -134,35 +75,12 @@
             <input 
                 type="text" 
                 class="formulario__input--sociales" 
-                name="redes[instagram] " 
+                name="instagram" 
                 placeholder="Instagram" 
+                value="<?php echo $artista->redes ?? ""; ?>"
             >
         </div>
     </div>
-    <div class="formulario__campo">
-        <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
-                <i class="fa-brands fa-tiktok"></i>
-            </div>
-            <input 
-                type="text" 
-                class="formulario__input--sociales" 
-                name="redes[tiktok] " 
-                placeholder="Tiktok" 
-            >
-        </div>
-    </div>
-    <div class="formulario__campo">
-        <div class="formulario__contenedor-icono">
-            <div class="formulario__icono">
-                <i class="fa-brands fa-github"></i>
-            </div>
-            <input 
-                type="text" 
-                class="formulario__input--sociales" 
-                name="redes[github] " 
-                placeholder="GitHub" 
-            >
-        </div>
-    </div>
+    
+    
 </fieldset>
