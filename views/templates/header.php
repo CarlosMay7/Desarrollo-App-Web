@@ -44,7 +44,7 @@
 
         <nav class="navegacion">
             <a href="/nosotros" class="navegacion__enlace <?php echo pagina_actual("/nosotros") ? "navegacion__enlace--actual" : ""; ?>">Nosotros</a>
-            <a href="/mis-conciertos" id="mis-conciertos" class="navegacion__enlace <?php echo pagina_actual("/paquetes") ? "navegacion__enlace--actual" : ""; ?>">Mis Conciertos</a>
+            <a href="/mis-conciertos" id="mis-conciertos" class="navegacion__enlace <?php echo pagina_actual("/mis-conciertos") ? "navegacion__enlace--actual" : ""; ?>">Mis Conciertos</a>
             <a href="/conciertos" class="navegacion__enlace <?php echo pagina_actual("/conciertos") ? "navegacion__enlace--actual" : ""; ?>">Conciertos</a>
         </nav>
     </div>

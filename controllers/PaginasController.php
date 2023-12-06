@@ -57,7 +57,7 @@ class PaginasController {
         }
 
         $usuario = Usuario::find($_SESSION["id"]);
-
+        $usuario->conciertos = "1,2,3";
         $misConciertos = [];
 
         if($usuario->conciertos != "") {
@@ -65,7 +65,7 @@ class PaginasController {
         }
 
         if(isset($_COOKIE["mis-conciertos"])){
-            $conciertosAgregados = json_decode($_COOKIE["mis-conciertos"], true);
+            $conciertosAgregados = json_decode($_COOKIE["mis-conciertos"], true) ?? [];
             $conciertos = array_unique(array_merge($conciertosUsuario, $conciertosAgregados));
             foreach($conciertos as $concierto) {
                 if(!in_array($concierto, $misConciertos)) {
