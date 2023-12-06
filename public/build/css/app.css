@@ -560,6 +560,11 @@ h3 {
   color: #FFFFFF;
 }
 
+@media print {
+  .artistas {
+    display: none;
+  }
+}
 .artistas__grid {
   width: min(95%, 140rem);
   margin: 0 auto;
@@ -986,6 +991,11 @@ h3 {
     height: 9rem;
   }
 }
+@media print {
+  .header__navegacion {
+    display: none;
+  }
+}
 .header__enlace, .header__submit {
   all: unset;
   color: #FFFFFF;
@@ -1151,6 +1161,11 @@ h3 {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+@media print {
+  .navegacion {
+    display: none;
+  }
 }
 @media (min-width: 768px) {
   .navegacion {

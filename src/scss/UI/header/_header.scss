@@ -23,6 +23,10 @@
             justify-content: space-between;
             height: 9rem;
         }
+
+        @media print {
+            display: none;
+        }
     }
 
     &__enlace {

@@ -1,5 +1,5 @@
 <header class="header">
-    <div class="header__contenedor">P
+    <div class="header__contenedor">
         <nav class="header__navegacion">
             <a href="/">
                 <h1 class="header__logo">
