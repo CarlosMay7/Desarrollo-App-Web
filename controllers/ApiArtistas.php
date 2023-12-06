@@ -5,10 +5,25 @@ namespace Controllers;
 use Model\Artista;
 
 class ApiArtistas {
+/**
+ * Devuelve un JSON con todos los artistas
+ * 
+ * 
+ * @return JSON
+ * 
+ */
     public static function index (){
         $artistas = Artista::all();
         echo json_encode($artistas);
     }
+/**
+ * Devuelve un JSON con el artista seleccionado
+ * 
+ * 
+ * @return JSON
+ * 
+ */
+
 
     public static function artista(){
         $id = $_GET["id"];
