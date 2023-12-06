@@ -10,6 +10,14 @@ class Fecha extends ActiveRecord {
     public $mes;
     public $año;
 
+ /**
+ * Constructor de un nuevo objeto fecha
+ * 
+ * @param $args array Arreglo con los datos a insertar en la base de datos
+ * @return Fecha Objeto Fecha
+ * 
+ */
+
     public function __construct($args = []){
         $this->id = $args['id'] ?? null;
         $this->dia = $args['dia'] ?? '';
@@ -17,7 +25,13 @@ class Fecha extends ActiveRecord {
         $this->año = $args['año'] ?? '';
     }
 
-    // Mensajes de validación para la creación de un evento
+  /**
+ * validación de los datos ingresados para crear una nueva fecha
+ * 
+ *
+ * @return self::$alertas array Arreglo con los mensajes de error
+ * 
+ */
     public function validar() {
         if(!$this->dia) {
             self::$alertas['error'][] = 'El Campo Día es Obligatorio';

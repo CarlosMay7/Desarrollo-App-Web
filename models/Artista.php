@@ -12,7 +12,13 @@ class Artista extends ActiveRecord {
     public $etiquetas;
     public $redes;
     public $descripcion;
-
+ /**
+ * Constructor de un nuevo objeto Artista
+ * 
+ * @param $args array Arreglo con los datos a insertar en la base de datos
+ * @return Artista Objeto Artista
+ * 
+ */
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
@@ -23,6 +29,14 @@ class Artista extends ActiveRecord {
         $this->redes = $args ["redes"] ?? "";
         $this->descripcion =$args['descripcion'] ?? '';
     }
+
+ /**
+ * validación de los datos ingresados para crear un nuevo artista
+ * 
+ *
+ * @return self::$alertas array Arreglo con los mensajes de error
+ * 
+ */
 
     public function validar() {
         if(!$this->nombre) {

@@ -15,7 +15,13 @@ class Concierto extends ActiveRecord {
     public $url_compra;
     public $sold_out;
 
-    //Agregar géneros y disponibilidad
+  /**
+ * Constructor de un nuevo objeto concierto
+ * 
+ * @param $args array Arreglo con los datos a insertar en la base de datos
+ * @return Concierto Objeto Concierto
+ * 
+ */
 
     public function __construct($args = []){
         $this->id = $args['id'] ?? null;
@@ -28,7 +34,14 @@ class Concierto extends ActiveRecord {
         $this->sold_out = $args['sold_out'] ?? '0';
     }
 
-    // Mensajes de validación para la creación de un evento
+ /**
+ * validación de los datos ingresados para crear un nuevo concierto
+ * 
+ *
+ * @return self::$alertas array Arreglo con los mensajes de error
+ * 
+ */
+
     public function validar() {
         if(!$this->ciudad) {
             self::$alertas['error'][] = 'El Campo Ciudad es Obligatorio';

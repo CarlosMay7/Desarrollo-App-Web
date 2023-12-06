@@ -10,7 +10,13 @@ class Tour extends ActiveRecord {
     public $artista_id;
     public $artista;
 
-
+ /**
+ * Constructor de un nuevo objeto Tour
+ * 
+ * @param $args array Arreglo con los datos a insertar en la base de datos
+ * @return Tour Objeto Tour
+ * 
+ */
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
@@ -19,7 +25,13 @@ class Tour extends ActiveRecord {
         $this->artista_id = $args['artista_id'] ?? '';
         
     }
-
+ /**
+ * validación de los datos ingresados para crear un nuevo tour
+ * 
+ *
+ * @return self::$alertas array Arreglo con los mensajes de error
+ * 
+ */
     public function validar(){
         if(!$this->nombre){
             self::$alertas['error'][] = 'El nombre es obligatorio';

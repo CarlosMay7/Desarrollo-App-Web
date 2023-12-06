@@ -10,6 +10,13 @@ class ConciertosDeTour extends ActiveRecord {
     public $concierto_id;
     public $concierto;
 
+ /**
+ * Constructor de un nuevo objeto ConciertosDeTour para agregar conciertos a un tour
+ * 
+ * @param $args array Arreglo con los datos a insertar en la base de datos
+ * @return ConciertosDeTour Objeto ConciertosDeTour
+ * 
+ */
 
 
     public function __construct($args = [])
@@ -18,6 +25,13 @@ class ConciertosDeTour extends ActiveRecord {
         $this->concierto_id = $args['concierto_id'] ?? null;
     }
 
+     /**
+ * validación de los datos ingresados para agregar conciertos a un tour
+ * 
+ *
+ * @return self::$alertas array Arreglo con los mensajes de error
+ * 
+ */
 
     public function validar() {
         if(!$this->tour_id) {

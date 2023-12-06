@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2023 a las 03:35:14
+-- Tiempo de generación: 06-12-2023 a las 18:50:25
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -45,19 +45,20 @@ CREATE TABLE `artistas` (
   `nombre` varchar(128) NOT NULL,
   `imagen` text NOT NULL,
   `etiquetas` varchar(64) NOT NULL,
-  `redes` varchar(64) NOT NULL
+  `redes` varchar(64) NOT NULL,
+  `descripcion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `artistas`
 --
 
-INSERT INTO `artistas` (`id`, `nombre`, `imagen`, `etiquetas`, `redes`) VALUES
-(1, 'Florencia Bertotti', 'https://www.sonica.mx/u/fotografias/m/2023/11/28/f685x385-50654_88347_5050.jpg', 'SONG-WRITER', '{\"instagram\":\"@flobertottiok\"}'),
-(2, 'Iron Maiden', 'https://th.bing.com/th/id/OIF.xw7oWGBwSpxA25hkKfXvPQ?rs=1&pid=ImgDetMain', 'HEAVY-METAL', '{\"instagram\":\"@ironmaiden\"}'),
-(4, 'Luis Miguel', 'https://tolucalabellacd.com/wp-content/uploads/2023/02/anuncian-tour-2023-de-luis-miguel-de-manera-oficial.jpg', 'ROMANCE', '{\"instagram\":\"@luismiguel\"}'),
-(5, 'Alejandro Fernandez', 'https://th.bing.com/th/id/OIP.9qoNVNJ4nPyeoCIQiDauqwHaE5?w=264&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7', 'RANCHERA', '{\"instagram\":\"@alexoficial\"}'),
-(6, 'MEGADETH', 'https://th.bing.com/th/id/OIP.BONzQ8YSXyrYCb8W8fzQjgHaEK?w=329&h=185&c=7&r=0&o=5&dpr=1.3&pid=1.7', 'TRASH-METAL,METAL', '{\"instagram\":\"@Megadeth\"}');
+INSERT INTO `artistas` (`id`, `nombre`, `imagen`, `etiquetas`, `redes`, `descripcion`) VALUES
+(1, 'Florencia Bertotti', 'https://www.sonica.mx/u/fotografias/m/2023/11/28/f685x385-50654_88347_5050.jpg', 'SONG-WRITER', '{\"instagram\":\"@flobertottiok\"}', 'María Florencia Bertotti​ es una actriz, cantante, compositora, directora teatral y creadora de contenidos digitales argentina. Es conocida por haber protagonizado las telenovelas infantiles Floricienta.'),
+(2, 'Iron Maiden', 'https://th.bing.com/th/id/OIF.xw7oWGBwSpxA25hkKfXvPQ?rs=1&pid=ImgDetMain', 'HEAVY-METAL', '{\"instagram\":\"@ironmaiden\"}', 'Iron Maiden es una banda británica de heavy metal fundada en en en 1975 por el bajista Steve Harris. Considerada una de las agrupaciones más importantes y representativas del género, han vendido más de 100 millones de discos en todo el mundo, a pesar de haber contado con poco apoyo de los medios masivos durante la mayor parte de su carrera.'),
+(4, 'Luis Miguel', 'https://tolucalabellacd.com/wp-content/uploads/2023/02/anuncian-tour-2023-de-luis-miguel-de-manera-oficial.jpg', 'ROMANCE', '{\"instagram\":\"@luismiguel\"}', 'Luis Miguel Gallego Basteri, ​​ conocido como Luis Miguel, es un cantante y productor mexicano.​​​ Reconocido por su poderosa voz y su presencia escénica, es uno de los cantantes más exitosos de la música en español.'),
+(5, 'Alejandro Fernandez', 'https://th.bing.com/th/id/OIP.9qoNVNJ4nPyeoCIQiDauqwHaE5?w=264&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7', 'RANCHERA', '{\"instagram\":\"@alexoficial\"}', 'Alejandro Fernández Abarca es un cantante de ranchera y pop latino mexicano, hijo del recordado cantante ranchero Vicente Fernández. En un principio se especializó en estilos tradicionales de música regional mexicana​ como mariachi.'),
+(6, 'MEGADETH', 'https://th.bing.com/th/id/OIP.BONzQ8YSXyrYCb8W8fzQjgHaEK?w=329&h=185&c=7&r=0&o=5&dpr=1.3&pid=1.7', 'TRASH-METAL,METAL', '{\"instagram\":\"@Megadeth\"}', 'Megadeth es un grupo musical estadounidense de thrash metal, formado en Los Ángeles, California. Fue creada en 1983 por Dave Mustaine, después de que fuera expulsado de Metallica, donde ocupaba el puesto de guitarrista principal.');
 
 -- --------------------------------------------------------
 
