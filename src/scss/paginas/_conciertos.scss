@@ -85,11 +85,7 @@
                 cursor: pointer;
                 transform: scale(1.1);
             }
-            
-           
-        }
-
-        
+        }        
     }
 
     &__ciudad {
@@ -109,6 +105,7 @@
         color: v.$blanco;
         text-align: end;
         font-weight: v.$bold;
+        text-decoration: none;
     }
 
   

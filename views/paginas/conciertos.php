@@ -20,7 +20,7 @@
                     <p class="concierto__fecha"><?php echo $concierto->dia . " " . $concierto->mes?> </p>
                         <div class="concierto__card">
                             <a href="/lista-conciertos?concierto=<?php echo $concierto->id?>">
-                                <img class="concierto__imagen-artista" loading="lazy" width="200" height="300" src= "<?php echo $concierto->imagen?>" alt="Artista">
+                                <img class="concierto__imagen-artista" loading="lazy" width="200" height="300" src="<?php echo $_ENV["HOST"] . "/img/artistas/" . $concierto->imagen; ?>" alt="Artista">
                             </a>
                         <div class="concierto__informacion">
                             <h4 class="concierto__nombre"><?php echo $concierto->recinto ?></h4>
@@ -61,8 +61,8 @@
                     <p class="concierto__fecha"><?php echo $concierto->dia . " " . $concierto->mes?> </p>
                     <a href="/lista-conciertos?concierto=<?php echo $concierto->id?>">
                         <div class="concierto__card">
-                            <img class="concierto__imagen-artista" loading="lazy" width="200" height="300" src= "<?php echo $concierto->imagen?>" alt="Artista">
-                            </a>
+                            <img class="concierto__imagen-artista" loading="lazy" width="200" height="300" src="<?php echo $_ENV["HOST"] . "/img/artistas/" . $concierto->imagen; ?>" alt="Artista">
+                    </a>
                             <div class="concierto__informacion">
                                 <h4 class="concierto__nombre"><?php echo $concierto->recinto ?></h4>
                                 

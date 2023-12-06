@@ -5,7 +5,7 @@
 
     <div class="listaconciertos__grid">
         <div class="listaconciertos__imagen">
-            <img loading="lazy" width="200" height="300" src="<?php echo $concierto->imagen ?>" alt="Artista"> 
+            <img loading="lazy" width="200" height="300" src="<?php echo $_ENV["HOST"] . "/img/artistas/" . $concierto->imagen; ?>" alt="Artista"> 
         </div>
 
         <div class="listaconciertos__contenido">

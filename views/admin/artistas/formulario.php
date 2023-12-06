@@ -24,11 +24,11 @@
         >
     </div>
 
-    <?php if(isset($artista->imagenActual)){ ?>
+    <?php if($artista->imagen != ""){ ?>
 
         <p class="formulario__texto">Imagen Actual:</p>
         <div class="formulario__imagen">
-            <img loading="lazy" src="<?php echo $_ENV["HOST"] . "/img/artistas/" . $artista->imagen; ?>.jpg" alt="imagen Artista">
+            <img loading="lazy" src="<?php echo $_ENV["HOST"] . "/img/artistas/" . $artista->imagen; ?>" alt="imagen Artista">
         </div>
     <?php } ?>
 
@@ -36,6 +36,18 @@
 
 <fieldset class="formulario__fieldset">
     <legend class="formulario__legend">Información Personal Extra</legend>
+
+    <div class="formulario__campo">
+        <label for="descripcion" class="formulario__label">Descripción</label>
+        <input 
+            type="text" 
+            class="formulario__input" 
+            id="descripcion" 
+            name="descripcion" 
+            placeholder="Descripción del Artista" 
+            value="<?php echo $artista->descripcion ?? "";?>"
+        >
+    </div>
 
     <div class="formulario__campo">
         <label for="tags_input" class="formulario__label">Géneros (Separados por comas)</label>
@@ -49,6 +61,7 @@
         <div id="tags" class="formulario__listado"></div>
         <input type="hidden" name="etiquetas" value="<?php echo $artista->etiquetas ?? ""; ?>">
     </div>
+
 </fieldset>
 
 <fieldset class="formulario__fieldset">
@@ -62,9 +75,9 @@
             <input 
                 type="text" 
                 class="formulario__input--sociales" 
-                name="redes[instagram] " 
+                name="instagram" 
                 placeholder="Instagram" 
-                value="<?php echo $artista->redes['instagram'] ?? ""; ?>"
+                value="<?php echo $artista->redes ?? ""; ?>"
             >
         </div>
     </div>

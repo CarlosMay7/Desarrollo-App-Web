@@ -1,14 +1,5 @@
 <h2 class="dashboard__heading"><?php echo $titulo; ?></h2>
 
-<div class ="dashboard__buscador">
-    <form class="dashboard__formulario" method="POST" action="/admin/conciertos/buscar">
-        <input class="dashboard__input" type="text" name="busqueda" placeholder="Buscar Concierto">
-        <button class="dashboard__boton" type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-    </form>
-</div>
-
 <div class="dashboard__contenedor-boton">
     <a class="dashboard__boton" href="/admin/conciertos/crear">
         <i class="fa-solid fa-circle-plus"></i>

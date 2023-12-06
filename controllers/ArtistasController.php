@@ -67,62 +67,53 @@ class ArtistasController {
         $artista = new artista;
         
         if($_SERVER["REQUEST_METHOD"] === "POST"){
+
+            $existe = Artista::where("nombre", $_POST["nombre"]);
+
+            if($existe) {
+                Artista::setAlerta("error", "El artista ya existe");
+                $alertas = Artista::getAlertas();
+            }
+
             if(!empty($_FILES["imagen"]["tmp_name"])){
                 $carpetaImagenes = "../public/img/artistas/";
-                // basename($_FILES["imagen"]["name"]
                 $nombreArchivo = md5(uniqid(rand(), true));
                 $archivo = $carpetaImagenes . $nombreArchivo;
-                $tipoImagen = strtolower(pathinfo(basename($_FILES["imagen"]["name"]), PATHINFO_EXTENSION));
+                $tipoMime = strtolower(pathinfo($_FILES["imagen"]["full_path"], PATHINFO_EXTENSION));
+                $tipoImagen = strtolower(pathinfo($archivo, PATHINFO_EXTENSION));
 
-                // Verificar si es una imagen real o un archivo falso
-                $check = getimagesize($_FILES["imagen"]["tmp_name"]);
-                if ($check !== false) {
-                    echo "El archivo es una imagen - " . $check["mime"] . ".";
-                } else {
-                    echo "El archivo no es una imagen.";
-                }
-
-                // Verificar si el archivo ya existe
-                if (file_exists($archivo)) {
-                    echo "Lo siento, el archivo ya existe.";
-                }
-
-                // Permitir solo ciertos formatos de archivo (en este ejemplo, jpg, jpeg, png, gif)
+                // Permitir solo ciertos formatos de archivo
                 $allowedFormats = ["jpg", "jpeg", "png", "gif"];
-                if (!in_array($tipoImagen, $allowedFormats)) {
-                    echo "Solo se permiten archivos JPG, JPEG, PNG y GIF.";
+                if (!in_array($tipoMime, $allowedFormats)) {
+                    Artista::setAlerta("error", "Ingrese un tipo de imagen válido");
                 }
 
                 //Crear carpeta si no existe
-
                 if(!is_dir($carpetaImagenes)){
                     mkdir($carpetaImagenes, 0755, true);
                 }
-            } 
 
-            $_POST["redes"] = json_encode($_POST["redes"], JSON_UNESCAPED_SLASHES);
-
-            $_POST["imagen"] = $nombreArchivo;
-            $artista->sincronizar($_POST);
-
-            //Validar 
-            $alertas = $artista->validar();
-
-            //Guardar el registro
-            if(empty($alertas)){
-                // Intentar mover el archivo al directorio de destino
-                if (move_uploaded_file($_FILES["imagen"]["tmp_name"],$archivo)) {
-                    echo "El archivo " . htmlspecialchars(basename($_FILES["imagen"]["name"])) . " ha sido subido correctamente.";
-                } else {
-                    echo "Lo siento, hubo un error al subir tu archivo.";
+                $artista->redes = $_POST["instagram"];
+                $artista->imagen = $nombreArchivo;
+                $artista->sincronizar($_POST);
+                $alertas = $artista->validar();
+    
+                //Guardar el registro
+                if(empty($alertas)){
+                    // Intentar mover el archivo al directorio de destino
+                    move_uploaded_file($_FILES["imagen"]["tmp_name"],$archivo . $tipoImagen);
+    
+                    //Guardar en la db
+                    $artista->imagenActual = $nombreArchivo;
+                    $resultado = $artista->guardar();
+    
+                    if($resultado){
+                        header("Location: /admin/artistas");
+                    }
                 }
-
-                //Guardar en la db
-                $resultado = $artista->guardar();
-
-                if($resultado){
-                    header("Location: /admin/artistas");
-                }
+            }else {
+                Artista::setAlerta("error", "Ingrese una imagen");
+                $alertas = Artista::getAlertas();
             }
         }
         $redes = json_decode($artista->redes);
@@ -165,71 +156,58 @@ class ArtistasController {
             header("Location: /admin/artistas");
         }
 
-        $artista->imagen = $artista->imagen;
+        // $artista->imagen = $artista->imagen;
         $redes = json_decode($artista->redes);
 
-        if($_SERVER["REQUEST_METHOD"] === "POST"){
+        if($_SERVER["REQUEST_METHOD"] === "POST" ){
+
+            $artista->sincronizar($_POST);
 
             if(!empty($_FILES["imagen"]["tmp_name"])){
                 $carpetaImagenes = "../public/img/artistas/";
-                // basename($_FILES["imagen"]["name"]
-                $archivo = $carpetaImagenes . md5(uniqid(rand(), true));
+                $nombreArchivo = md5(uniqid(rand(), true));
+                $archivo = $carpetaImagenes . $nombreArchivo;
+                $tipoMime = strtolower(pathinfo($_FILES["imagen"]["full_path"], PATHINFO_EXTENSION));
                 $tipoImagen = strtolower(pathinfo($archivo, PATHINFO_EXTENSION));
 
-                // Verificar si es una imagen real o un archivo falso
-                $check = getimagesize($_FILES["imagen"]["tmp_name"]);
-                if ($check !== false) {
-                    echo "El archivo es una imagen - " . $check["mime"] . ".";
-                } else {
-                    echo "El archivo no es una imagen.";
-                }
-
-                // Verificar si el archivo ya existe
-                if (file_exists($archivo)) {
-                    echo "Lo siento, el archivo ya existe.";
-                }
-
-                // Permitir solo ciertos formatos de archivo (en este ejemplo, jpg, jpeg, png, gif)
+                // Permitir solo ciertos formatos de archivo
                 $allowedFormats = ["jpg", "jpeg", "png", "gif"];
-                if (!in_array($tipoImagen, $allowedFormats)) {
-                    echo "Solo se permiten archivos JPG, JPEG, PNG y GIF.";
+                if (!in_array($tipoMime, $allowedFormats)) {
+                    Artista::setAlerta("error", "Ingrese un tipo de imagen válido");
                 }
 
                 //Crear carpeta si no existe
-
                 if(!is_dir($carpetaImagenes)){
                     mkdir($carpetaImagenes, 0755, true);
                 }
+
+                $artista->redes = $_POST["instagram"];
+                $artista->imagen = $nombreArchivo;
+                $alertas = $artista->validar();
+    
+                //Guardar el registro
+                if(empty($alertas)){
+                    // Intentar mover el archivo al directorio de destino
+                    move_uploaded_file($_FILES["imagen"]["tmp_name"],$archivo . $tipoImagen);
+    
+                    //Guardar en la db
+                    $artista->imagenActual = $nombreArchivo;
+                    $resultado = $artista->guardar();
+    
+                    if($resultado){
+                        header("Location: /admin/artistas");
+                    }
+                }
             } 
-
-            $_POST["redes"] = json_encode($_POST["redes"], JSON_UNESCAPED_SLASHES);
-            $artista->sincronizar($_POST);
-            $alertas = $artista->validar();
-
-            //Guardar el registro
-            if(empty($alertas)){
-                // Intentar mover el archivo al directorio de destino
-                if (move_uploaded_file($_FILES["imagen"]["tmp_name"],$archivo)) {
-                    $imagen = $archivo;
-                    echo "El archivo " . htmlspecialchars(basename($_FILES["imagen"]["name"])) . " ha sido subido correctamente.";
-                } else {
-                    echo "Lo siento, hubo un error al subir tu archivo.";
-                }
-
-                //Guardar en la db
-                $resultado = $artista->guardar();
-
-                if($resultado){
-                    header("Location: /admin/artistas");
-                }
-            }
+            $resultado = $artista->guardar();
+            header("Location: /admin/artistas");
         }
 
         $router->render("admin/artistas/editar", [ 
             "titulo" => "Editar Artista / Banda",
             "alertas" => $alertas,
             "artista" => $artista,
-            "redes" => $redes
+            "redes" => $redes,
         ]);
     }
 /**
