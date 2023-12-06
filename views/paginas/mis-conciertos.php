@@ -10,35 +10,17 @@
     </div>
     
 <?php } else { ?>
-  <div class ="mis-conciertos__caja">
-        <?php foreach($misConciertos as $concierto){ ?>
-        <div class= "mis-conciertos__conteiner">
-        <div class ="mis-conciertos__contenido">
-            <img class="mis-conciertos__imagen-artista" loading="lazy" width="50" height="100" src= "<?php echo $concierto->imagen?>" alt="Artista">
-            <div class="mis-conciertos__info">
-            <p class="mis-conciertos__artista"><?php echo $concierto->nombre?></p>
-            <p class="mis-conciertos__ciudad"> <?php echo $concierto->ciudad . " - " . $concierto->recinto ?></p>
-            
-        </div>
-        </div>
-        <form action="/mis-conciertos" method ="POST">
-            <input type="hidden" name="id" value="<?= $concierto->id; ?>">
-            <input type="checkbox" class = "mis-conciertos__eliminar" checked="">
-        </form>
-        </div>
-    
-            <?php } ?>
+    <form class="mis-conciertos__listado" method="POST">
+            <?php foreach($misConciertos as $concierto){ ?>
+
+                <div class="mis-conciertos__concierto">
+                    <label class="mins-conciertos__concierto-nombre"><?php echo $concierto->nombre?> - <?php echo $concierto->dia?>/<?php echo $concierto->mes?>/<?php echo $concierto->año?></label>
+                    <input name="conciertos[]" type="checkbox" class ="mis-conciertos__check" value="<?= $concierto->id; ?>" checked>
+                </div>
         
-
-
-  </div>
-
-  <div class="mis-conciertos__agregar">
-        <form action="/mis-conciertos" method ="POST">
-            <input type="submit" value="Agregar Conciertos" class="mis-conciertos__boton">
-
+                <?php } ?>
         </form>
-  </div>
+    <button id="boton-enviar" class="mis-conciertos__boton">Agregar Conciertos</button>
 <?php } ?>
 
 </main>

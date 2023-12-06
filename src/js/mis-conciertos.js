@@ -11,6 +11,6 @@ btnMisConciertos.addEventListener('click', ()=>{
         localStorage.clear()
     }
 
-    setCookie("mis-conciertos", conciertos, 30);
+    setCookie("mis-conciertos", conciertos, 1);
 
 });

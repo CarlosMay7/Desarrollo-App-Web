@@ -43,57 +43,68 @@ class PaginasController {
     }
 
     public static function guardarMisConciertos() {
-        $misConciertos = implode(",",$_POST["conciertos"]);
+        $misConciertos = implode(",",$_POST["conciertos"] ?? []);
+        session_start();
         $usuario = Usuario::find($_SESSION["id"]);
-        $usuario->conciertos = $misConciertos;
+        $usuario->conciertosGuardados = $misConciertos;
         $usuario->guardar();
 
         header("Location: /mis-conciertos");
     }
+
     public static function misConciertos(Router $router) {
 
         if(!isAuth()){
             header("Location: /login");
         }
+
         $usuario = Usuario::find($_SESSION["id"]);
-
         $misConciertos = [];
+        $conciertos = [];
 
-        if($usuario->conciertosGuardados != NULL) {
-            $conciertosUsuario = explode(",", $usuario->conciertosGuardados);
+        if($usuario->conciertosGuardados != NULL && $usuario->conciertosGuardados != "") {
+            if(strlen($usuario->conciertosGuardados) > 1) {
+                $conciertosUsuario = explode(",", $usuario->conciertosGuardados);
+            } else {
+                $conciertosUsuario[] = $usuario->conciertosGuardados;
+            }
         }else{
             $conciertosUsuario = [];
         }
 
-        if(isset($_COOKIE["mis-conciertos"]) && $_COOKIE["mis-conciertos"] != "null"){
-            if($conciertosUsuario != NULL){
-            $conciertosAgregados = json_decode($_COOKIE["mis-conciertos"], true);
-            $conciertos = array_unique(array_merge($conciertosUsuario, $conciertosAgregados));
-        }else{
-            $conciertos = json_decode($_COOKIE["mis-conciertos"], true);
+        if(isset($_COOKIE["mis-conciertos"]) && $_COOKIE["mis-conciertos"] != null){
+            if(!empty($conciertosUsuario)){
+                $conciertosAgregados = json_decode($_COOKIE["mis-conciertos"], true) ?? [];
+                $conciertos = array_unique(array_merge($conciertosUsuario, $conciertosAgregados));
+                $_COOKIE["mis-conciertos"] = [];
+                setcookie("mis-conciertos", "", time() - 3600, "/");
+            }else{
+                $conciertos = json_decode($_COOKIE["mis-conciertos"], true);
+                $_COOKIE["mis-conciertos"] = [];
+                setcookie("mis-conciertos", "", time() - 3600, "/");
+            }
+        } elseif (!empty($conciertosUsuario)) {
+            $conciertos = $conciertosUsuario;
         }
-            foreach($conciertos as $concierto) {
-                if(!in_array($concierto, $misConciertos)) {
-                    $misConciertos[] = Concierto::find($concierto);
 
-                } else {
-                    continue;
-                }
+        foreach($conciertos as $concierto) {
+            if(!in_array($concierto, $misConciertos)) {
+                $misConciertos[] = Concierto::find($concierto);
+            } else {
+                continue;
             }
+        }
 
-            foreach($misConciertos as $concierto){
-                $concierto->artista = Artista::find($concierto->artista_id);
-                $artista  = Artista::find($concierto->artista_id);
-                $concierto->imagen = $artista->imagen;
-                $concierto->nombre = $artista->nombre;
-                $fecha = Fecha::find($concierto->fecha_id);
-                $concierto->dia = $fecha->dia;
-                $concierto->mes = $fecha->mes;
-                $concierto->año = $fecha->año;
-                $concierto = transformMonthsforOne($concierto);
-            }
-
-        
+        foreach($misConciertos as $concierto){
+            $concierto->artista = Artista::find($concierto->artista_id);
+            $artista  = Artista::find($concierto->artista_id);
+            $concierto->imagen = $artista->imagen;
+            $concierto->nombre = $artista->nombre;
+            $fecha = Fecha::find($concierto->fecha_id);
+            $concierto->dia = $fecha->dia;
+            $concierto->mes = $fecha->mes;
+            $concierto->año = $fecha->año;
+            $concierto = transformMonthsforOne($concierto);
         }
 
         $router->render("/paginas/mis-conciertos", [
