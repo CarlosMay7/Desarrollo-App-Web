@@ -25,10 +25,18 @@
             <input type="checkbox" class = "mis-conciertos__eliminar" checked="">
         </form>
         </div>
+    
             <?php } ?>
         
 
 
+  </div>
+
+  <div class="mis-conciertos__agregar">
+        <form action="">
+            <input type="submit" value="Agregar Conciertos" class="mis-conciertos__boton">
+            
+        </form>
   </div>
 <?php } ?>
 

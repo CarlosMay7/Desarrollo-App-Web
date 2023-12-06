@@ -459,6 +459,16 @@ h3 {
   cursor: pointer;
   transition: 500ms transform ease;
 }
+.mis-conciertos__boton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007df4;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: 500ms transform ease;
+}
 
 .agenda {
   padding: 1rem 0;
@@ -519,16 +529,16 @@ h3 {
 }
 .concierto__introduccion {
   font-size: 1.6rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
 }
-@media (min-width: 768px) {
-  .concierto__introduccion {
-    -webkit-line-clamp: 2;
-  }
+.concierto__introduccion svg {
+  transition: transform 300ms ease, color 300ms ease;
+}
+.concierto__introduccion svg:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: #d9d9d9;
 }
 .concierto__ciudad {
   color: #FFFFFF;

@@ -54,4 +54,14 @@
         cursor: pointer;
         transition: 500ms transform ease;
     }
+    &__boton{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: v.$azul;
+        color: v.$blanco;
+        cursor: pointer;
+        transition: 500ms transform ease;
+    }
 }
