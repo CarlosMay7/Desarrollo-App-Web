@@ -109,4 +109,28 @@ class PaginasController {
         ]);
     }
 
+    public static function descripcionArtistas(Router $router) {
+        $id = $_GET["artista"];
+        $artista = Artista::find($id);
+        $conciertos = Concierto::ordenar("artista_id", "ASC");
+        $conciertosPorArtista = [];
+        foreach($conciertos as $concierto){
+            if($concierto->artista_id == $id){
+                $fecha = Fecha::find($concierto->fecha_id);
+                $concierto->dia = $fecha->dia;
+                $concierto->mes = $fecha->mes;
+                $concierto->año = $fecha->año;
+                $concierto = transformMonthsforOne($concierto);
+                $conciertosPorArtista[] = $concierto;
+            }
+        }
+
+        $router->render("/paginas/descrip-artista", [
+            "titulo" => "Información del Artista",
+            "artista" => $artista,
+            "conciertos" => $conciertosPorArtista]);
+        
+    }
+    
+
 }

@@ -672,6 +672,60 @@ h3 {
   line-height: 2;
 }
 
+.descripcionartistas {
+  /* Style the buttons inside the tab */
+  /* Change background color of buttons on hover */
+  /* Create an active/current tablink class */
+  /* Style the tab content */
+}
+.descripcionartistas__grid {
+  width: min(95%, 140rem);
+  margin: 0 auto;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 768px) {
+  .descripcionartistas__grid {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+}
+.descripcionartistas__texto {
+  line-height: 2;
+}
+.descripcionartistas .tab {
+  overflow: hidden;
+  border: 1px solid #007df4;
+  background-color: #007df4;
+}
+.descripcionartistas .tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: #FFFFFF;
+}
+.descripcionartistas .tab button:hover {
+  background-color: #FFFFFF;
+  color: #007df4;
+}
+.descripcionartistas .tab button.active {
+  background-color: #FFFFFF;
+  color: #007df4;
+  display: block;
+}
+.descripcionartistas .tabcontent {
+  display: none;
+  padding: 6px 12px;
+}
+
 .formulario {
   display: flex;
   flex-direction: column;

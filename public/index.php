@@ -61,6 +61,7 @@ $router->get('/', [PaginasController::class, 'index']);
 $router->get('/nosotros', [PaginasController::class, 'nosotros']);
 $router->get('/mis-conciertos', [PaginasController::class, 'misConciertos']);
 $router->get('/lista-conciertos', [PaginasController::class, 'listaConciertos']);
+$router->get('/descrip-artista', [PaginasController::class, 'descripcionArtistas']);
 $router->get('/conciertos', [PaginasController::class, 'conciertos']);
 
 $router->get('/404', [PaginasController::class, 'error']);
