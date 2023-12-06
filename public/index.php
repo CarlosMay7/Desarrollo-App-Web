@@ -56,13 +56,14 @@ $router->get('/api/conciertos-horario', [Apiconciertos::class, 'index']);
 $router->get('/api/artistas', [ApiArtistas::class, 'index']);
 $router->get('/api/artista', [ApiArtistas::class, 'artista']);
 
+$router->post('/mis-conciertos', [PaginasController::class, 'misConciertos']);
 //Area Publica
 $router->get('/', [PaginasController::class, 'index']);
 $router->get('/nosotros', [PaginasController::class, 'nosotros']);
 $router->get('/mis-conciertos', [PaginasController::class, 'misConciertos']);
 $router->get('/lista-conciertos', [PaginasController::class, 'listaConciertos']);
 $router->get('/conciertos', [PaginasController::class, 'conciertos']);
-
+$router->get('/artistas', [PaginasController::class, 'artistas']);
 $router->get('/404', [PaginasController::class, 'error']);
 
 $router->comprobarRutas();

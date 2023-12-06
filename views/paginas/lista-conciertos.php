@@ -14,7 +14,7 @@
             <p class="listaconciertos__recinto">Recinto: <?php echo $concierto->recinto ?></p>
             <p class="listaconciertos__fecha">Fecha: <?php echo $concierto->dia . " " . $concierto->mes . " " . $concierto->año ?></p>
             <p class="listaconciertos__descripcion"><?php echo $concierto->descripcion ?></p>
-        
+            <button class="listaconciertos__agregar"> <3 </button>
             <?php if ($concierto->tour != NULL){?>
             <p class="listaconciertos__tour"> <?php echo $concierto->tour ?> </p>
             <?php } ?>

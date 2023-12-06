@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2023 a las 07:14:44
+-- Tiempo de generación: 06-12-2023 a las 03:35:14
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `concentus`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ACTUALIZAR_TABLA_EVENTOS` ()   INSERT INTO registros_eventos (mensaje) VALUES (CONCAT('Se borraron fechas en la fecha ', NOW()))$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Borrar_ConciertosPasados` ()   BEGIN
+DELETE FROM fecha WHERE STR_TO_DATE(CONCAT(año, '-', mes, '-', dia), '%Y-%m-%d') < DATE_SUB(CURDATE(), INTERVAL 1 DAY);
+CALL ACTUALIZAR_TABLA_EVENTOS();
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -40,11 +53,11 @@ CREATE TABLE `artistas` (
 --
 
 INSERT INTO `artistas` (`id`, `nombre`, `imagen`, `etiquetas`, `redes`) VALUES
-(1, 'Florencia Bertotti', 'https://www.sonica.mx/u/fotografias/m/2023/11/28/f685x385-50654_88347_5050.jpg', 'SONG-WRITER', '@flobertottiok'),
-(2, 'Iron Maiden', 'https://th.bing.com/th/id/OIF.xw7oWGBwSpxA25hkKfXvPQ?rs=1&pid=ImgDetMain', 'HEAVY-METAL', '@ironmaiden'),
-(4, 'Luis Miguel', 'https://tolucalabellacd.com/wp-content/uploads/2023/02/anuncian-tour-2023-de-luis-miguel-de-manera-oficial.jpg', 'ROMANCE', '@luismiguel'),
-(5, 'Alejandro Fernandez', 'https://th.bing.com/th/id/OIP.9qoNVNJ4nPyeoCIQiDauqwHaE5?w=264&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7', 'RANCHERA', '@alexoficial'),
-(6, 'MEGADETH', 'https://th.bing.com/th/id/OIP.BONzQ8YSXyrYCb8W8fzQjgHaEK?w=329&h=185&c=7&r=0&o=5&dpr=1.3&pid=1.7', 'TRASH-METAL', '@megadeth');
+(1, 'Florencia Bertotti', 'https://www.sonica.mx/u/fotografias/m/2023/11/28/f685x385-50654_88347_5050.jpg', 'SONG-WRITER', '{\"instagram\":\"@flobertottiok\"}'),
+(2, 'Iron Maiden', 'https://th.bing.com/th/id/OIF.xw7oWGBwSpxA25hkKfXvPQ?rs=1&pid=ImgDetMain', 'HEAVY-METAL', '{\"instagram\":\"@ironmaiden\"}'),
+(4, 'Luis Miguel', 'https://tolucalabellacd.com/wp-content/uploads/2023/02/anuncian-tour-2023-de-luis-miguel-de-manera-oficial.jpg', 'ROMANCE', '{\"instagram\":\"@luismiguel\"}'),
+(5, 'Alejandro Fernandez', 'https://th.bing.com/th/id/OIP.9qoNVNJ4nPyeoCIQiDauqwHaE5?w=264&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7', 'RANCHERA', '{\"instagram\":\"@alexoficial\"}'),
+(6, 'MEGADETH', 'https://th.bing.com/th/id/OIP.BONzQ8YSXyrYCb8W8fzQjgHaEK?w=329&h=185&c=7&r=0&o=5&dpr=1.3&pid=1.7', 'TRASH-METAL,METAL', '{\"instagram\":\"@Megadeth\"}');
 
 -- --------------------------------------------------------
 
@@ -70,10 +83,6 @@ CREATE TABLE `conciertos` (
 INSERT INTO `conciertos` (`id`, `ciudad`, `recinto`, `fecha_id`, `descripcion`, `url_compra`, `artista_id`, `sold_out`) VALUES
 (1, 'CDMX', 'Auditorio Nacional', 1, 'Venta general, 1 de Diciembre, 10:00 am', 'https://www.ticketmaster.com.mx/search?q=flor%20bertotti', 1, 0),
 (2, 'CDMX', 'Foro-Sol', 2, 'PREVENTA HSBC 30 DE NOVIEMBRE Y 1 DE DICIEMBRE 2:00 PM\r\n\r\nVENTA GENERAL 3 DE DICIEMBRE 2:00 PM', 'https://www.ticketmaster.com.mx/search?q=Iron%20maiden', 2, 0),
-(3, 'CDMX', 'Arena CDMX', 3, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1),
-(4, 'Queretaro', 'Estadio Corregidora', 4, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
-(5, 'Aguascalientes', 'Estadio Victoria', 5, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
-(6, 'San Luis Potosi', 'Estadio Alfonso Lastras', 6, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
 (7, 'Leon', 'Estadio TV4 Domingo Santana', 7, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
 (8, 'Puebla', 'Estadio Cuahtemoc', 8, 'Luis Miguel Tour 2023', 'https://luismigueloficial.com/tour', 4, 1),
 (9, 'Oaxaca', 'Estadio Tecnológico de Oaxaca', 9, 'LUIS MIGUEL TOUR 2023', 'https://luismigueloficial.com/tour', 4, 1),
@@ -112,10 +121,6 @@ CREATE TABLE `conciertosdetour` (
 --
 
 INSERT INTO `conciertosdetour` (`tour_id`, `concierto_id`) VALUES
-(1, 3),
-(1, 4),
-(1, 5),
-(1, 6),
 (1, 7),
 (1, 8),
 (1, 9),
@@ -152,10 +157,6 @@ CREATE TABLE `fecha` (
 INSERT INTO `fecha` (`id`, `dia`, `mes`, `año`) VALUES
 (1, 24, 3, '2024'),
 (2, 20, 11, '2024'),
-(3, 28, 11, '2023'),
-(4, 30, 11, '2023'),
-(5, 2, 12, '2023'),
-(6, 4, 12, '2023'),
 (7, 5, 12, '2023'),
 (8, 8, 12, '2023'),
 (9, 10, 12, '2023'),
@@ -177,6 +178,25 @@ INSERT INTO `fecha` (`id`, `dia`, `mes`, `año`) VALUES
 (25, 14, 2, '2024'),
 (28, 25, 4, '2024'),
 (29, 27, 4, '2024');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `registros_eventos`
+--
+
+CREATE TABLE `registros_eventos` (
+  `id` int(11) NOT NULL,
+  `mensaje` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `registros_eventos`
+--
+
+INSERT INTO `registros_eventos` (`id`, `mensaje`) VALUES
+(1, 'Evento ejecutado el 2023-12-05 18:48:13'),
+(2, 'Evento ejecutado el 2023-12-05 19:01:06');
 
 -- --------------------------------------------------------
 
@@ -213,15 +233,17 @@ CREATE TABLE `usuarios` (
   `password` text NOT NULL,
   `confirmado` tinyint(1) NOT NULL,
   `token` varchar(128) NOT NULL,
-  `admin` tinyint(1) NOT NULL
+  `admin` tinyint(1) NOT NULL,
+  `conciertosGuardados` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `password`, `confirmado`, `token`, `admin`) VALUES
-(1, ' Diego', 'Alamilla', 'diego-alamilla@hotmail.com', '$2y$10$Bcfk1AxhFstxy/XvJrTRYu.7Tf5X8SP7H4uFpLT8IHvLZZ8/CNR3O', 0, '6566c58a866a4', 0);
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `password`, `confirmado`, `token`, `admin`, `conciertosGuardados`) VALUES
+(1, ' Diego', 'Alamilla', 'diego-alamilla@hotmail.com', '$2y$10$Bcfk1AxhFstxy/XvJrTRYu.7Tf5X8SP7H4uFpLT8IHvLZZ8/CNR3O', 0, '6566c58a866a4', 0, NULL),
+(2, ' Diego', 'Alamilla', 'diego@ejemplo.com', '$2y$10$H12wHH9TdJsmX3L03Xe/iO7LUuJnlKji5l6tA7oL0ictiX3O2FEfO', 1, '', 1, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -253,6 +275,12 @@ ALTER TABLE `conciertosdetour`
 --
 ALTER TABLE `fecha`
   ADD PRIMARY KEY (`id`,`dia`,`mes`,`año`);
+
+--
+-- Indices de la tabla `registros_eventos`
+--
+ALTER TABLE `registros_eventos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tours`
@@ -287,7 +315,13 @@ ALTER TABLE `conciertos`
 -- AUTO_INCREMENT de la tabla `fecha`
 --
 ALTER TABLE `fecha`
-  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT de la tabla `registros_eventos`
+--
+ALTER TABLE `registros_eventos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tours`
@@ -299,7 +333,7 @@ ALTER TABLE `tours`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -310,13 +344,13 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `conciertos`
   ADD CONSTRAINT `conciertos_ibfk_1` FOREIGN KEY (`artista_id`) REFERENCES `artistas` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `conciertos_ibfk_2` FOREIGN KEY (`fecha_id`) REFERENCES `fecha` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `conciertos_ibfk_2` FOREIGN KEY (`fecha_id`) REFERENCES `fecha` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `conciertosdetour`
 --
 ALTER TABLE `conciertosdetour`
-  ADD CONSTRAINT `conciertosdetour_ibfk_1` FOREIGN KEY (`concierto_id`) REFERENCES `conciertos` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `conciertosdetour_ibfk_1` FOREIGN KEY (`concierto_id`) REFERENCES `conciertos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `conciertosdetour_ibfk_2` FOREIGN KEY (`tour_id`) REFERENCES `tours` (`id`) ON UPDATE CASCADE;
 
 --
@@ -324,6 +358,16 @@ ALTER TABLE `conciertosdetour`
 --
 ALTER TABLE `tours`
   ADD CONSTRAINT `tours_ibfk_1` FOREIGN KEY (`artista_id`) REFERENCES `artistas` (`id`) ON UPDATE CASCADE;
+
+DELIMITER $$
+--
+-- Eventos
+--
+CREATE DEFINER=`root`@`localhost` EVENT `eliminar_registros_diariamente` ON SCHEDULE EVERY 1 DAY STARTS '2023-12-05 18:54:06' ON COMPLETION PRESERVE ENABLE DO BEGIN
+    CALL Borrar_ConciertosPasados();
+END$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -10,14 +10,16 @@
     <?php foreach($artistas as $artista){ ?>
 
         <div class="artista">
+            <a href="/artistas?artista=<?php echo $artista->id?>">
             <img class="artista__imagen-autor" loading="lazy" width="200" height="300" src="<?php echo $artista->imagen?>"alt="">
 
             <div class="artista__informacion">
                 <h4 class="artista__nombre"><?php echo $artista->nombre?></h4>
-
+                </a>
                 <nav class="artista-sociales">
                     <a class="artista-sociales__enlace" rel="noopener noreferrer" target="_blank" href="#">
-                        <span class="artista-sociales__"><?php echo $artista->redes?></span>
+                        <?php $redes = explode('"', $artista->redes)?>
+                        <span class="artista-sociales__"><?php echo $redes[3]?></span>
                     </a> 
                     <a class="artista-sociales__enlace" rel="noopener noreferrer" target="_blank" href="#">
                         <span class="artista-sociales__ocultar">Facebook</span>

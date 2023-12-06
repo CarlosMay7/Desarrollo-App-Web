@@ -4,7 +4,7 @@ namespace Model;
 
 class Usuario extends ActiveRecord {
     protected static $tabla = 'usuarios';
-    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'password', 'confirmado', 'token', 'admin'];
+    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'password', 'confirmado', 'token', 'admin', 'conciertosGuardados'];
 
     public $id;
     public $nombre;
@@ -17,6 +17,7 @@ class Usuario extends ActiveRecord {
     public $confirmado;
     public $token;
     public $admin;
+    public $conciertosGuardados;
 
     public function __construct($args = [])
     {
@@ -109,6 +110,10 @@ class Usuario extends ActiveRecord {
         return password_verify($this->password_actual, $this->password );
     }
 
+    //
+    public function agregar_ConciertoGuardado($id) : void {
+        $this->conciertosGuardados = $this->conciertosGuardados . ',' . $id;
+    }
     // Hashea el password
     public function hashPassword() : void {
         $this->password = password_hash($this->password, PASSWORD_BCRYPT);
