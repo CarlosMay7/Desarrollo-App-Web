@@ -45,33 +45,28 @@ class PaginasController {
         if(!isAuth()){
             header("Location: /login");
         }
-// Obtener datos enviados mediante POST
-        $ids = $_POST['datos'];
+        
+        $conciertos = Concierto::ordenar("fecha_id", "ASC");
+        foreach($conciertos as $concierto){
 
-if(isset($ids)) {
-    // Acceder a los datos recibidos
-    $titulo = "Mis Conciertos RECIBIDOS";
-    $datosRecibidos = $data['datos'];
-    
-    // Puedes realizar acciones con los datos recibidos, por ejemplo, guardarlos en una base de datos
-    // ...
+            $concierto->artista = Artista::find($concierto->artista_id);
+            $artista  = Artista::find($concierto->artista_id);
+            $concierto->imagen = $artista->imagen;
+            $concierto->nombre = $artista->nombre;
+            $fecha = Fecha::find($concierto->fecha_id);
+            $concierto->dia = $fecha->dia;
+            $concierto->mes = $fecha->mes;
+            $concierto->año = $fecha->año;
+            
 
-    // Enviar respuesta (opcional)
-    $response = array('mensaje' => 'Datos recibidos correctamente en el servidor');
-    header('Content-Type: application/json');
-    echo json_encode($response);
-} else {
-    $titulo = "Mis Conciertos";
-    // Si no se enviaron datos o la estructura es incorrecta
-    $response = array('error' => 'No se enviaron datos o la estructura es incorrecta');
-    header('Content-Type: application/json');
-    echo json_encode($response);
-}
+            
+        }
+        $conciertosPorFecha = transformMonths($conciertos);
 
         
         $router->render("/paginas/mis-conciertos", [
-            "titulo" => $titulo,
-            "conciertos" => $conciertos
+            "titulo" => "Mis Conciertos",
+            "misConciertos" => $conciertos
 
         ]);
     }
@@ -135,7 +130,7 @@ if(isset($ids)) {
         ]);
     }
 
-    public static function artistas(Router $router){
+    public static function descripcionArtistas(Router $router) {
         $id = $_GET["artista"];
         $artista = Artista::find($id);
         $conciertos = Concierto::ordenar("artista_id", "ASC");
@@ -151,11 +146,12 @@ if(isset($ids)) {
             }
         }
 
-        $router->render("/paginas/artistas", [
+        $router->render("/paginas/descrip-artista", [
             "titulo" => "Información del Artista",
             "artista" => $artista,
-            "conciertos" => $conciertosPorArtista
-        ]);
+            "conciertos" => $conciertosPorArtista]);
+        
     }
+    
 
 }

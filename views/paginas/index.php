@@ -4,13 +4,13 @@
 
 <section class="artistas">
     <h2 class="artistas__heading">Artistas</h2>
-    <p class="artistas__descripcion">Checa a los artistas más destacados</p>
+    <p class="artistas__descripcion">¡Conoce a los artistas más destacados!</p>
     <div class="artistas__grid">
     
     <?php foreach($artistas as $artista){ ?>
 
         <div class="artista">
-            <a href="/artistas?artista=<?php echo $artista->id?>">
+        <a href="/descrip-artista?artista=<?php echo $artista->id?>">
             <img class="artista__imagen-autor" loading="lazy" width="200" height="300" src="<?php echo $artista->imagen?>"alt="">
 
             <div class="artista__informacion">
@@ -39,6 +39,7 @@
                         </li>
                 </ul>
             </div>
+        </a>
         </div>
 
     <?php } ?>
