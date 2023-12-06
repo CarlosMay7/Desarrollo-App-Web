@@ -33,11 +33,20 @@
         }
     }
 
+    &__nombre {
+        color: lighten(v.$gris-oscuro,25%);
+    }
+
     &__imagen {
         min-width: 350px;
         @include m.tablet{
             min-width: unset;
         }
+    }
+
+    &__imagen-autor {
+        max-height: 50%;
+        object-fit: contain;
     }
 
     &__ubicacion {

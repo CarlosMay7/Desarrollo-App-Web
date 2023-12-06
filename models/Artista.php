@@ -21,7 +21,7 @@ class Artista extends ActiveRecord {
         $this->imagenActual = $args['imagenActual'] ?? '';
         $this->etiquetas = $args['etiquetas'] ?? '';
         $this->redes = $args ["redes"] ?? "";
-        $this->descripcion =$args['descripcion'] ?? '';
+        $this->descripcion = $args ["descripcion"] ?? "";
     }
 
     public function validar() {
@@ -31,9 +31,11 @@ class Artista extends ActiveRecord {
         if(!$this->imagen) {
             self::$alertas['error'][] = 'La imagen es obligatoria';
         }
-        
         if(!$this->etiquetas) {
-            self::$alertas['error'][] = 'Debe tener al menos una etiqueta';
+            self::$alertas['error'][] = 'Debe tener al menos dos etiquetas';
+        }
+        if(!$this->descripcion) {
+            self::$alertas['error'][] = 'Debe agregar una descripción del artista';
         }
     
         return self::$alertas;

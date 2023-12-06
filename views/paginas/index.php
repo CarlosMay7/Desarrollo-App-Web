@@ -11,15 +11,16 @@
 
         <div class="artista">
         <a href="/descrip-artista?artista=<?php echo $artista->id?>">
-            <img class="artista__imagen-autor" loading="lazy" width="200" height="300" src="<?php echo $artista->imagen?>"alt="">
+            <img class="artista__imagen-autor" loading="lazy" width="200" height="300" src="<?php echo $_ENV["HOST"] . "/img/artistas/" . $artista->imagen; ?>" alt="">
 
             <div class="artista__informacion">
-                <h4 class="artista__nombre"><?php echo $artista->nombre?></h4>
                 </a>
+
+                <h4 class="artista__nombre"><?php echo $artista->nombre?></h4>
+
                 <nav class="artista-sociales">
                     <a class="artista-sociales__enlace" rel="noopener noreferrer" target="_blank" href="#">
-                        <?php $redes = explode('"', $artista->redes)?>
-                        <span class="artista-sociales__"><?php echo $redes[3]?></span>
+                        <span class="artista-sociales__"><?php echo $artista->redes?></span>
                     </a> 
                     <a class="artista-sociales__enlace" rel="noopener noreferrer" target="_blank" href="#">
                         <span class="artista-sociales__ocultar">Facebook</span>
