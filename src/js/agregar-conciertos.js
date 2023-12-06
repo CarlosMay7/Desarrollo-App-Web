@@ -18,3 +18,10 @@ const btnAgregarConcierto = document.querySelectorAll('.bi').forEach((boton) => 
         localStorage.setItem('mis-conciertos', JSON.stringify(conciertosGuardados));
     })
 });
+
+const btnGuardarConciertos = document.querySelector("#boton-enviar");
+if(btnGuardarConciertos) {
+    btnGuardarConciertos.addEventListener('click', () => {
+        document.querySelector('.mis-conciertos__listado').submit();
+    });
+}
