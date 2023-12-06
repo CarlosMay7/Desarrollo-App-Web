@@ -122,24 +122,26 @@ class PaginasController {
             $conciertos = $conciertosUsuario;
         }
 
-        foreach($conciertos as $concierto) {
-            if(!in_array($concierto, $misConciertos)) {
-                $misConciertos[] = Concierto::find($concierto);
-            } else {
-                continue;
+        if(!empty($conciertos) && !empty($misConciertos)) {
+            foreach($conciertos as $concierto) {
+                if(!in_array($concierto, $misConciertos)) {
+                    $misConciertos[] = Concierto::find($concierto);
+                } else {
+                    continue;
+                }
             }
-        }
 
-        foreach($misConciertos as $concierto){
-            $concierto->artista = Artista::find($concierto->artista_id);
-            $artista  = Artista::find($concierto->artista_id);
-            $concierto->imagen = $artista->imagen;
-            $concierto->nombre = $artista->nombre;
-            $fecha = Fecha::find($concierto->fecha_id);
-            $concierto->dia = $fecha->dia;
-            $concierto->mes = $fecha->mes;
-            $concierto->año = $fecha->año;
-            $concierto = transformMonthsforOne($concierto);
+            foreach($misConciertos as $concierto){
+                $concierto->artista = Artista::find($concierto->artista_id);
+                $artista  = Artista::find($concierto->artista_id);
+                $concierto->imagen = $artista->imagen;
+                $concierto->nombre = $artista->nombre;
+                $fecha = Fecha::find($concierto->fecha_id);
+                $concierto->dia = $fecha->dia;
+                $concierto->mes = $fecha->mes;
+                $concierto->año = $fecha->año;
+                $concierto = transformMonthsforOne($concierto);
+            }
         }
 
         $router->render("/paginas/mis-conciertos", [
