@@ -6,10 +6,34 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class Email {
 
+    /**
+     * Contiene el email
+     *
+     * @var mixed
+     */
     public $email;
+
+    /**
+     * Contiene el nombre del usuario
+     *
+     * @var string
+     */
     public $nombre;
+
+    /**
+     * Contiene el token
+     *
+     * @var string
+     */
     public $token;
     
+    /**
+     * Objeto de la clase Email
+     *
+     * @param string $email
+     * @param string $nombre
+     * @param string $token
+     */
     public function __construct($email, $nombre, $token)
     {
         $this->email = $email;
@@ -17,6 +41,11 @@ class Email {
         $this->token = $token;
     }
 
+    /**
+     * Envía la confirmación
+     *
+     * @return void
+     */
     public function enviarConfirmacion() {
 
         // create a new object
@@ -48,6 +77,11 @@ class Email {
 
     }
 
+    /**
+     * Envia instrucciones
+     *
+     * @return void
+     */
     public function enviarInstrucciones() {
 
         // create a new object
