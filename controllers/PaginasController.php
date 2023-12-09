@@ -122,7 +122,7 @@ class PaginasController {
             $conciertos = $conciertosUsuario;
         }
 
-        if(!empty($conciertos) && !empty($misConciertos)) {
+        if(!empty($conciertos) || !empty($misConciertos)) {
             foreach($conciertos as $concierto) {
                 if(!in_array($concierto, $misConciertos)) {
                     $misConciertos[] = Concierto::find($concierto);
